@@ -1,0 +1,248 @@
+/* =========================
+   GENERAL PAGE
+========================= */
+
+body {
+    background-color: black;
+    color: white;
+
+    font-family: Arial, sans-serif;
+
+    height: 100vh;
+    margin: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+}
+
+
+/* =========================
+   SCREENS
+========================= */
+
+#welcome-screen,
+#verification-screen,
+#quiz-screen {
+
+    flex-direction: column;
+    align-items: center;
+
+}
+
+
+/* =========================
+   WELCOME SCREEN
+========================= */
+
+#welcome-screen {
+    display: flex;
+}
+
+
+/* =========================
+   VERIFICATION SCREEN
+========================= */
+
+#verification-screen {
+    display: none;
+}
+
+
+/* =========================
+   QUIZ SCREEN
+========================= */
+
+#quiz-screen {
+    display: none;
+}
+
+
+/* =========================
+   QUIZ RESULT AREAS
+========================= */
+
+#wrong-answer,
+#correct-answer {
+
+    display: none;
+
+    flex-direction: column;
+
+    align-items: center;
+
+}
+
+
+/* =========================
+   MAIN TITLE
+========================= */
+
+h1 {
+
+    font-size: 42px;
+
+    font-weight: normal;
+
+    letter-spacing: 2px;
+
+    animation: fadeIn 3s ease-in-out;
+
+}
+
+
+/* =========================
+   OTHER HEADINGS
+========================= */
+
+h2 {
+
+    font-size: 36px;
+
+    font-weight: normal;
+
+    letter-spacing: 3px;
+
+    animation: fadeIn 2s ease-in-out;
+
+}
+
+
+h3 {
+
+    margin-top: 30px;
+
+    font-size: 22px;
+
+    font-weight: normal;
+
+}
+
+
+/* =========================
+   PARAGRAPHS
+========================= */
+
+p {
+
+    font-size: 18px;
+
+    line-height: 1.8;
+
+    color: #cccccc;
+
+    max-width: 500px;
+
+    animation: fadeIn 3s ease-in-out;
+
+}
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+button {
+
+    margin-top: 30px;
+
+    padding: 14px 32px;
+
+    background-color: transparent;
+
+    color: white;
+
+    border: 1px solid white;
+
+    border-radius: 30px;
+
+    font-size: 16px;
+
+    cursor: pointer;
+
+    transition: all 0.3s ease;
+
+}
+
+
+/* =========================
+   BUTTON HOVER
+========================= */
+
+button:hover {
+
+    background-color: white;
+
+    color: black;
+
+    transform: scale(1.08);
+
+    box-shadow:
+        0 0 20px rgba(255, 255, 255, 0.4);
+
+}
+
+
+/* =========================
+   QUIZ ANSWERS
+========================= */
+
+.answers {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 12px;
+
+    margin-top: 10px;
+
+}
+
+
+.answers button {
+
+    margin-top: 0;
+
+    min-width: 220px;
+
+}
+
+
+/* =========================
+   SECOND CHANCE BUTTONS
+========================= */
+
+#another-chance-button,
+#no-chance-button {
+
+    min-width: 260px;
+
+}
+
+
+/* =========================
+   FADE ANIMATION
+========================= */
+
+@keyframes fadeIn {
+
+    from {
+
+        opacity: 0;
+
+        transform: translateY(15px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform: translateY(0);
+
+    }
+
+}

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Welcome to My Life</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Welcome Screen -->
+
+    <div id="welcome-screen">
+
+        <h1>Welcome to Hasitha's Life</h1>
+
+        <button id="enter-button">
+            Go Into My Life
+        </button>
+
+    </div>
+
+
+    <!-- Verification Screen -->
+
+    <div id="verification-screen">
+
+        <h2>Wait...</h2>
+
+        <p>
+            No one else can enter Hasitha's life.
+            <br>
+            We need to verify who you are.
+        </p>
+
+        <button id="verify-button">
+            Verify
+        </button>
+
+    </div>
+
+
+    <!-- Quiz Screen -->
+
+    <div id="quiz-screen">
+
+        <h2>How Well Do You Know Hasitha?</h2>
+
+        <p>
+            Before you enter his life,
+            <br>
+            let's see if you really know him.
+        </p>
+
+        <h3>What is Hasitha's favorite food?</h3>
+
+        <div class="answers">
+
+            <button class="answer" data-answer="wrong">
+                Pizza
+            </button>
+
+            <button class="answer" data-answer="correct">
+                Rice & Curry
+            </button>
+
+            <button class="answer" data-answer="wrong">
+                Burger
+            </button>
+
+            <button class="answer" data-answer="wrong">
+                Sushi
+            </button>
+
+        </div>
+
+
+        <!-- Wrong Answer Area -->
+
+        <div id="wrong-answer">
+
+            <p>
+                ❌ Wrong!
+                <br>
+                Hmm... are you really the person who belongs here?
+            </p>
+
+            <button id="another-chance-button">
+                Yes, Give Me Another Chance
+            </button>
+
+            <button id="no-chance-button">
+                No
+            </button>
+
+        </div>
+
+
+        <!-- Correct Answer -->
+
+        <div id="correct-answer">
+
+            <p>
+                ✅ Correct!
+                <br>
+                Maybe you really do know Hasitha...
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- JavaScript -->
+
+    <script src="index.js"></script>
+
+</body>
+
+</html>
