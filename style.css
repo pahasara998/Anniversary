@@ -1,154 +1,125 @@
-/* =========================
-   GENERAL PAGE
-========================= */
+/* =====================================================
+   BASIC PAGE
+===================================================== */
 
 body {
+
     background-color: black;
+
     color: white;
 
     font-family: Arial, sans-serif;
 
     height: 100vh;
+
     margin: 0;
 
     display: flex;
+
     justify-content: center;
+
     align-items: center;
 
     text-align: center;
+
 }
 
 
-/* =========================
-   SCREENS
-========================= */
+/* =====================================================
+   ALL SCREENS
+===================================================== */
 
 #welcome-screen,
 #verification-screen,
-#quiz-screen {
+#quiz-screen,
+#next-challenge-screen,
+#memory-lock-screen {
 
-    flex-direction: column;
-    align-items: center;
-
-}
-
-
-/* =========================
-   WELCOME SCREEN
-========================= */
-
-#welcome-screen {
     display: flex;
-}
-
-
-/* =========================
-   VERIFICATION SCREEN
-========================= */
-
-#verification-screen {
-    display: none;
-}
-
-
-/* =========================
-   QUIZ SCREEN
-========================= */
-
-#quiz-screen {
-    display: none;
-}
-
-
-/* =========================
-   QUIZ RESULT AREAS
-========================= */
-
-#wrong-answer,
-#correct-answer {
-
-    display: none;
 
     flex-direction: column;
 
+    justify-content: center;
+
     align-items: center;
+
+    width: 100%;
+
+    min-height: 100vh;
 
 }
 
 
-/* =========================
-   MAIN TITLE
-========================= */
+/* =====================================================
+   HIDDEN SCREENS
+===================================================== */
+
+#verification-screen,
+#quiz-screen,
+#next-challenge-screen,
+#memory-lock-screen {
+
+    display: none;
+
+}
+
+
+/* =====================================================
+   HEADINGS
+===================================================== */
 
 h1 {
 
     font-size: 42px;
 
-    font-weight: normal;
+    margin-bottom: 30px;
 
-    letter-spacing: 2px;
-
-    animation: fadeIn 3s ease-in-out;
+    animation:
+        fadeIn 2s ease-in-out;
 
 }
 
 
-/* =========================
-   OTHER HEADINGS
-========================= */
-
 h2 {
 
-    font-size: 36px;
+    font-size: 32px;
 
-    font-weight: normal;
-
-    letter-spacing: 3px;
-
-    animation: fadeIn 2s ease-in-out;
+    margin-bottom: 20px;
 
 }
 
 
 h3 {
 
-    margin-top: 30px;
-
     font-size: 22px;
 
-    font-weight: normal;
+    margin: 20px 0;
 
 }
 
 
-/* =========================
-   PARAGRAPHS
-========================= */
+/* =====================================================
+   TEXT
+===================================================== */
 
 p {
 
     font-size: 18px;
 
-    line-height: 1.8;
-
-    color: #cccccc;
-
-    max-width: 500px;
-
-    animation: fadeIn 3s ease-in-out;
+    line-height: 1.7;
 
 }
 
 
-/* =========================
+/* =====================================================
    BUTTONS
-========================= */
+===================================================== */
 
 button {
 
-    margin-top: 30px;
+    margin-top: 20px;
 
-    padding: 14px 32px;
+    padding: 14px 30px;
 
     background-color: transparent;
 
@@ -162,14 +133,11 @@ button {
 
     cursor: pointer;
 
-    transition: all 0.3s ease;
+    transition:
+        0.3s ease;
 
 }
 
-
-/* =========================
-   BUTTON HOVER
-========================= */
 
 button:hover {
 
@@ -177,17 +145,15 @@ button:hover {
 
     color: black;
 
-    transform: scale(1.08);
-
-    box-shadow:
-        0 0 20px rgba(255, 255, 255, 0.4);
+    transform:
+        scale(1.05);
 
 }
 
 
-/* =========================
+/* =====================================================
    QUIZ ANSWERS
-========================= */
+===================================================== */
 
 .answers {
 
@@ -195,37 +161,242 @@ button:hover {
 
     flex-direction: column;
 
-    gap: 12px;
+    align-items: center;
 
-    margin-top: 10px;
+    gap: 10px;
 
 }
 
 
 .answers button {
 
-    margin-top: 0;
-
-    min-width: 220px;
+    width: 220px;
 
 }
 
 
-/* =========================
-   SECOND CHANCE BUTTONS
-========================= */
+/* =====================================================
+   WRONG / CORRECT
+===================================================== */
 
-#another-chance-button,
-#no-chance-button {
+#wrong-answer,
+#correct-answer {
 
-    min-width: 260px;
+    display: none;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    margin-top: 25px;
 
 }
 
 
-/* =========================
-   FADE ANIMATION
-========================= */
+/* =====================================================
+   MEMORY IMAGE
+===================================================== */
+
+#memory-image {
+
+    display: none;
+
+    width: 400px;
+
+    max-width: 80vw;
+
+    max-height: 50vh;
+
+    object-fit: contain;
+
+    border-radius: 15px;
+
+    margin-top: 20px;
+
+    box-shadow:
+        0 0 30px
+        rgba(255, 255, 255, 0.2);
+
+}
+
+
+/* =====================================================
+   THREE MEMORY IMAGES
+===================================================== */
+
+#memory-three-images {
+
+    display: none;
+
+    gap: 20px;
+
+    justify-content: center;
+
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    margin-top: 25px;
+
+}
+
+
+/* =====================================================
+   MEMORY CARD
+===================================================== */
+
+.memory-card {
+
+    position: relative;
+
+    width: 180px;
+
+    height: 220px;
+
+    border: 1px solid
+        rgba(255, 255, 255, 0.5);
+
+    border-radius: 15px;
+
+    overflow: hidden;
+
+    background-color: #111;
+
+    transition:
+        0.3s ease;
+
+}
+
+
+.memory-card:hover {
+
+    transform:
+        scale(1.05);
+
+    border-color: white;
+
+    box-shadow:
+        0 0 20px
+        rgba(255, 255, 255, 0.3);
+
+}
+
+
+/* =====================================================
+   MEMORY CARD IMAGE
+===================================================== */
+
+.memory-card img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+}
+
+
+/* =====================================================
+   MEMORY NUMBER
+===================================================== */
+
+.memory-number {
+
+    position: absolute;
+
+    bottom: 10px;
+
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+    width: 40px;
+
+    height: 40px;
+
+    border-radius: 50%;
+
+    background-color:
+        rgba(0, 0, 0, 0.8);
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    font-size: 20px;
+
+    font-weight: bold;
+
+}
+
+
+/* =====================================================
+   MEMORY QUESTION
+===================================================== */
+
+#memory-question {
+
+    display: none;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    margin-top: 20px;
+
+}
+
+
+/* =====================================================
+   MEMORY ANSWERS
+===================================================== */
+
+.memory-answers {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 15px;
+
+    flex-wrap: wrap;
+
+}
+
+
+.memory-answers button {
+
+    min-width: 150px;
+
+}
+
+
+/* =====================================================
+   TIMER
+===================================================== */
+
+#memory-timer {
+
+    margin-top: 25px;
+
+    font-size: 24px;
+
+    font-weight: bold;
+
+}
+
+
+/* =====================================================
+   ANIMATION
+===================================================== */
 
 @keyframes fadeIn {
 
@@ -233,7 +404,8 @@ button:hover {
 
         opacity: 0;
 
-        transform: translateY(15px);
+        transform:
+            translateY(10px);
 
     }
 
@@ -241,7 +413,211 @@ button:hover {
 
         opacity: 1;
 
-        transform: translateY(0);
+        transform:
+            translateY(0);
+
+    }
+
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (
+    max-width: 600px
+) {
+
+    h1 {
+
+        font-size: 30px;
+
+    }
+
+
+    h2 {
+
+        font-size: 25px;
+
+    }
+
+
+    .memory-card {
+
+        width: 130px;
+
+        height: 170px;
+
+    }
+
+
+    .memory-answers {
+
+        flex-direction: column;
+
+    }
+
+
+    .memory-answers button {
+
+        width: 220px;
+
+    }
+
+}
+/* =====================================================
+   HUMAN VERIFICATION
+===================================================== */
+
+#human-verification-screen {
+
+    display: none;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    width: 100%;
+
+    min-height: 100vh;
+
+    animation:
+        fadeIn 1s ease-in-out;
+
+}
+
+
+/* =====================================================
+   HUMAN PUZZLE
+===================================================== */
+
+#human-puzzle {
+
+    position: relative;
+
+    width: 600px;
+
+    max-width: 90vw;
+
+    height: 400px;
+
+    margin-top: 25px;
+
+    border: 1px solid
+        rgba(255, 255, 255, 0.4);
+
+    border-radius: 15px;
+
+    overflow: hidden;
+
+    background-color: #111;
+
+}
+
+
+/* =====================================================
+   BACKGROUND IMAGE
+===================================================== */
+
+#human-background {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+}
+
+
+/* =====================================================
+   DRAGGABLE PIECE
+===================================================== */
+
+#human-piece {
+
+    position: absolute;
+
+    width: 120px;
+
+    height: 120px;
+
+    object-fit: cover;
+
+    border-radius: 10px;
+
+    cursor: grab;
+
+    border: 2px solid white;
+
+    left: 20px;
+
+    top: 20px;
+
+    transition:
+        box-shadow 0.2s ease;
+
+}
+
+
+#human-piece:active {
+
+    cursor: grabbing;
+
+    box-shadow:
+        0 0 25px
+        rgba(255, 255, 255, 0.5);
+
+}
+
+
+/* =====================================================
+   INSTRUCTION
+===================================================== */
+
+.human-hint {
+
+    font-size: 17px;
+
+    opacity: 0.9;
+
+}
+
+
+/* =====================================================
+   RESULT
+===================================================== */
+
+#human-result {
+
+    margin-top: 25px;
+
+    font-size: 20px;
+
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 600px) {
+
+    #human-puzzle {
+
+        height: 300px;
+
+    }
+
+
+    #human-piece {
+
+        width: 90px;
+
+        height: 90px;
 
     }
 

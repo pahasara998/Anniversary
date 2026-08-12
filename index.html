@@ -2,21 +2,31 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Welcome to My Life</title>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Welcome to My Life ❤️</title>
 
     <link rel="stylesheet" href="style.css">
+
 </head>
+
 
 <body>
 
-    <!-- Welcome Screen -->
+
+    <!-- =========================================
+         WELCOME SCREEN
+    ========================================== -->
 
     <div id="welcome-screen">
 
-        <h1>Welcome to Hasitha's Life</h1>
+        <h1>
+            Welcome to Hasitha's Life ❤️
+        </h1>
 
         <button id="enter-button">
             Go Into My Life
@@ -25,97 +35,341 @@
     </div>
 
 
-    <!-- Verification Screen -->
+
+    <!-- =========================================
+         VERIFICATION SCREEN
+    ========================================== -->
 
     <div id="verification-screen">
 
-        <h2>Wait...</h2>
+        <h2>
+            Wait... 👀
+        </h2>
 
         <p>
+
             No one else can enter Hasitha's life.
+
             <br>
-            We need to verify who you are.
+
+            We need to verify who you are. ❤️
+
         </p>
 
         <button id="verify-button">
-            Verify
+            Verify ❤️
         </button>
 
     </div>
 
 
-    <!-- Quiz Screen -->
+
+    <!-- =========================================
+         FIRST QUIZ
+    ========================================== -->
 
     <div id="quiz-screen">
 
-        <h2>How Well Do You Know Hasitha?</h2>
+        <h2>
+            How Well Do You Know Hasitha? ❤️
+        </h2>
 
         <p>
+
             Before you enter his life,
+
             <br>
+
             let's see if you really know him.
+
         </p>
 
-        <h3>What is Hasitha's favorite food?</h3>
+
+        <h3>
+            What is Hasitha's favorite food?
+        </h3>
+
 
         <div class="answers">
 
-            <button class="answer" data-answer="wrong">
-                Pizza
+            <button
+                class="answer"
+                data-answer="wrong">
+
+                Pizza 🍕
+
             </button>
 
-            <button class="answer" data-answer="correct">
-                Rice & Curry
+
+            <button
+                class="answer"
+                data-answer="correct">
+
+                Rice & Curry 🍛
+
             </button>
 
-            <button class="answer" data-answer="wrong">
-                Burger
+
+            <button
+                class="answer"
+                data-answer="wrong">
+
+                Burger 🍔
+
             </button>
 
-            <button class="answer" data-answer="wrong">
-                Sushi
+
+            <button
+                class="answer"
+                data-answer="wrong">
+
+                Sushi 🍣
+
             </button>
 
         </div>
 
 
-        <!-- Wrong Answer Area -->
+
+        <!-- WRONG ANSWER -->
 
         <div id="wrong-answer">
 
             <p>
+
                 ❌ Wrong!
+
                 <br>
-                Hmm... are you really the person who belongs here?
+
+                Hmm...
+                are you really the person who belongs here? 😏
+
             </p>
 
+
             <button id="another-chance-button">
-                Yes, Give Me Another Chance
+
+                Yes, Give Me Another Chance ❤️
+
             </button>
 
+
             <button id="no-chance-button">
-                No
+
+                No 😢
+
             </button>
 
         </div>
 
 
-        <!-- Correct Answer -->
+
+        <!-- CORRECT ANSWER -->
 
         <div id="correct-answer">
 
             <p>
+
                 ✅ Correct!
+
                 <br>
-                Maybe you really do know Hasitha...
+
+                Maybe you really do know Hasitha... ❤️
+
             </p>
+
+
+            <button id="continue-button">
+
+                Continue ❤️
+
+            </button>
 
         </div>
 
     </div>
 
 
-    <!-- JavaScript -->
+
+    <!-- =========================================
+         NEXT CHALLENGE SCREEN
+    ========================================== -->
+
+    <div id="next-challenge-screen">
+
+        <h2>
+            You're In... ❤️
+        </h2>
+
+
+        <p>
+
+            You passed the first test.
+
+            <br><br>
+
+            But knowing Hasitha isn't enough...
+
+        </p>
+
+
+        <p>
+
+            The next challenge is waiting for you.
+
+        </p>
+
+
+        <button id="next-challenge-button">
+
+            I'm Ready 😏
+
+        </button>
+
+    </div>
+
+
+
+    <!-- =========================================
+         MEMORY LOCK
+    ========================================== -->
+
+    <div id="memory-lock-screen">
+
+        <h2 id="memory-title">
+
+            🧠 Memory Lock
+
+        </h2>
+
+
+        <p id="memory-instruction">
+
+            📸 Remember this moment...
+
+        </p>
+
+
+
+        <!-- SINGLE IMAGE -->
+
+        <img
+            id="memory-image"
+            src=""
+            alt="Memory"
+        >
+
+
+
+        <!-- THREE IMAGES -->
+
+        <div id="memory-three-images">
+
+            <!-- JavaScript creates the
+                 three images here -->
+
+        </div>
+
+
+
+        <!-- QUESTION -->
+
+        <div id="memory-question">
+
+        </div>
+
+
+
+        <!-- TIMER -->
+
+        <div id="memory-timer">
+
+            ⏳ 5
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================================
+         HUMAN VERIFICATION
+    ========================================== -->
+
+    <div id="human-verification-screen">
+
+
+        <h2>
+            🤖 Human Verification
+        </h2>
+
+
+        <p id="human-instruction">
+
+            Before you enter Hasitha's life...
+
+            <br>
+
+            We need to make sure you're
+            actually human. 😏
+
+        </p>
+
+
+        <p class="human-hint">
+
+            🧩 Drag the missing person
+            into the correct place.
+
+        </p>
+
+
+
+        <!-- =====================================
+             PUZZLE AREA
+        ====================================== -->
+
+        <div id="human-puzzle">
+
+
+            <!-- Background Image -->
+
+            <img
+                id="human-background"
+                src="images/human-background.jpg"
+                alt="Puzzle background"
+            >
+
+
+            <!-- Draggable Image -->
+
+            <img
+                id="human-piece"
+                src="images/human-piece.jpg"
+                alt="Puzzle piece"
+                draggable="true"
+            >
+
+        </div>
+
+
+
+        <!-- =====================================
+             VERIFICATION RESULT
+        ====================================== -->
+
+        <div id="human-result">
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- =========================================
+         JAVASCRIPT
+    ========================================== -->
 
     <script src="index.js"></script>
 
