@@ -1,113 +1,105 @@
 /* =====================================================
-   BASIC PAGE
+   GENERAL
 ===================================================== */
 
+* {
+    box-sizing: border-box;
+}
+
+html,
 body {
-
-    background-color: black;
-
-    color: white;
-
-    font-family: Arial, sans-serif;
-
-    height: 100vh;
-
     margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100%;
+}
 
-    display: flex;
-
-    justify-content: center;
-
-    align-items: center;
-
+body {
+    background: #000;
+    color: white;
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
     text-align: center;
-
 }
 
 
 /* =====================================================
-   ALL SCREENS
+   COMMON SCREENS
 ===================================================== */
 
 #welcome-screen,
 #verification-screen,
 #quiz-screen,
 #next-challenge-screen,
-#memory-lock-screen {
-
-    display: flex;
-
-    flex-direction: column;
-
-    justify-content: center;
-
-    align-items: center;
-
-    width: 100%;
-
+#memory-lock-screen,
+#human-verification-screen,
+#three-doors-screen {
     min-height: 100vh;
-
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
 }
 
 
 /* =====================================================
-   HIDDEN SCREENS
+   WELCOME
 ===================================================== */
 
-#verification-screen,
-#quiz-screen,
-#next-challenge-screen,
-#memory-lock-screen {
-
-    display: none;
-
+#welcome-screen {
+    animation: fadeIn 2s ease-in-out;
 }
 
-
-/* =====================================================
-   HEADINGS
-===================================================== */
-
-h1 {
-
+#welcome-screen h1 {
     font-size: 42px;
-
-    margin-bottom: 30px;
-
-    animation:
-        fadeIn 2s ease-in-out;
-
 }
 
-
-h2 {
-
-    font-size: 32px;
-
-    margin-bottom: 20px;
-
-}
-
-
-h3 {
-
-    font-size: 22px;
-
-    margin: 20px 0;
-
+#welcome-screen button {
+    margin-top: 30px;
 }
 
 
 /* =====================================================
-   TEXT
+   VERIFICATION
 ===================================================== */
 
-p {
+#verification-screen {
+    display: none;
+}
 
+#verification-screen h2 {
+    font-size: 34px;
+}
+
+#verification-screen p {
     font-size: 18px;
+    line-height: 1.8;
+}
 
-    line-height: 1.7;
 
+/* =====================================================
+   QUIZ
+===================================================== */
+
+#quiz-screen {
+    display: none;
+}
+
+#quiz-screen h2 {
+    font-size: 32px;
+}
+
+#quiz-screen h3 {
+    margin-top: 30px;
+}
+
+.answers {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
 }
 
 
@@ -116,64 +108,71 @@ p {
 ===================================================== */
 
 button {
-
-    margin-top: 20px;
-
     padding: 14px 30px;
-
-    background-color: transparent;
-
+    background: transparent;
     color: white;
-
     border: 1px solid white;
-
     border-radius: 30px;
-
     font-size: 16px;
-
     cursor: pointer;
-
-    transition:
-        0.3s ease;
-
+    transition: 0.3s ease;
 }
 
-
 button:hover {
-
-    background-color: white;
-
+    background: white;
     color: black;
+    transform: scale(1.05);
+}
 
-    transform:
-        scale(1.05);
-
+button:disabled {
+    opacity: 0.6;
+    cursor: wait;
 }
 
 
 /* =====================================================
-   QUIZ ANSWERS
+   PERSONAL QUIZ
 ===================================================== */
 
-.answers {
+#quiz-intro {
+    font-size: 17px;
+    line-height: 1.6;
+}
 
-    display: flex;
+#quiz-progress {
+    margin-top: 12px;
+    font-size: 14px;
+    opacity: 0.6;
+    letter-spacing: 1px;
+}
 
+#quiz-question-area {
+    width: min(700px, 92vw);
+    margin-top: 8px;
+}
+
+#quiz-question-area h3 {
+    font-size: 24px;
+    line-height: 1.5;
+    margin: 18px 0;
+}
+
+.quiz-answer-grid {
+    width: min(520px, 90vw);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#quiz-complete {
+    display: none;
     flex-direction: column;
-
     align-items: center;
-
-    gap: 10px;
-
+    margin-top: 25px;
 }
 
-
-.answers button {
-
-    width: 220px;
-
+#quiz-complete p {
+    line-height: 1.8;
 }
-
 
 /* =====================================================
    WRONG / CORRECT
@@ -181,231 +180,1438 @@ button:hover {
 
 #wrong-answer,
 #correct-answer {
-
     display: none;
-
     flex-direction: column;
-
     align-items: center;
+    margin-top: 30px;
+}
 
-    margin-top: 25px;
-
+#wrong-answer p,
+#correct-answer p {
+    line-height: 1.7;
 }
 
 
 /* =====================================================
-   MEMORY IMAGE
+   NEXT CHALLENGE
 ===================================================== */
+
+#next-challenge-screen {
+    display: none;
+}
+
+#next-challenge-screen h2 {
+    font-size: 36px;
+}
+
+#next-challenge-screen p {
+    font-size: 18px;
+    line-height: 1.8;
+}
+
+
+/* =====================================================
+   MEMORY LOCK
+===================================================== */
+
+#memory-lock-screen {
+    display: none;
+}
 
 #memory-image {
-
     display: none;
-
-    width: 400px;
-
-    max-width: 80vw;
-
-    max-height: 50vh;
-
+    width: min(520px, 78vw);
+    max-height: 48vh;
     object-fit: contain;
-
     border-radius: 15px;
-
-    margin-top: 20px;
-
-    box-shadow:
-        0 0 30px
-        rgba(255, 255, 255, 0.2);
-
 }
-
-
-/* =====================================================
-   THREE MEMORY IMAGES
-===================================================== */
 
 #memory-three-images {
-
     display: none;
-
-    gap: 20px;
-
+    flex-direction: row;
     justify-content: center;
-
     align-items: center;
-
-    flex-wrap: wrap;
-
-    margin-top: 25px;
-
+    gap: 12px;
+    width: min(760px, 92vw);
 }
-
-
-/* =====================================================
-   MEMORY CARD
-===================================================== */
-
-.memory-card {
-
-    position: relative;
-
-    width: 180px;
-
-    height: 220px;
-
-    border: 1px solid
-        rgba(255, 255, 255, 0.5);
-
-    border-radius: 15px;
-
-    overflow: hidden;
-
-    background-color: #111;
-
-    transition:
-        0.3s ease;
-
-}
-
-
-.memory-card:hover {
-
-    transform:
-        scale(1.05);
-
-    border-color: white;
-
-    box-shadow:
-        0 0 20px
-        rgba(255, 255, 255, 0.3);
-
-}
-
-
-/* =====================================================
-   MEMORY CARD IMAGE
-===================================================== */
-
-.memory-card img {
-
-    width: 100%;
-
-    height: 100%;
-
-    object-fit: cover;
-
-}
-
-
-/* =====================================================
-   MEMORY NUMBER
-===================================================== */
 
 .memory-number {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    z-index: 3;
+    width: 34px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(0,0,0,0.65);
+    border: 1px solid rgba(255,255,255,0.35);
+    font-weight: bold;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.35);
+}
+
+.memory-card {
+    position: relative;
+    width: 180px;
+    height: 220px;
+    overflow: hidden;
+    border-radius: 15px;
+}
+
+.memory-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#memory-question {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.memory-answers {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+/* Memory Lock timer is visible */
+#memory-timer {
+    display: block;
+    margin-top: 20px;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+
+/* =====================================================
+   HUMAN VERIFICATION
+===================================================== */
+
+#human-verification-screen {
+    display: none;
+}
+
+#human-puzzle {
+    position: relative;
+    width: 600px;
+    max-width: 90vw;
+    height: 400px;
+    margin-top: 25px;
+    overflow: hidden;
+    border-radius: 15px;
+}
+
+#human-background {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#human-piece {
+    position: absolute;
+    width: 240px;
+    height: 240px;
+    left: 20px;
+    top: 20px;
+    object-fit: fill;
+    cursor: grab;
+    z-index: 10;
+    border: 2px solid white;
+    border-radius: 10px;
+}
+
+
+/* =====================================================
+   THREE DOORS
+===================================================== */
+
+#three-doors-screen {
+    display: none;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #151515 0%,
+            #050505 55%,
+            #000 100%
+        );
+
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+#three-doors-screen h2 {
+    font-size: 42px;
+    margin-bottom: 10px;
+
+    text-shadow:
+        0 0 20px
+        rgba(255,255,255,0.4);
+}
+
+#door-instruction {
+    font-size: 18px;
+    line-height: 1.8;
+    margin-bottom: 35px;
+}
+
+
+/* =====================================================
+   DOORS CONTAINER
+===================================================== */
+
+#doors-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 35px;
+    width: 100%;
+    max-width: 1000px;
+}
+
+
+/* =====================================================
+   DOOR
+===================================================== */
+
+.door {
+    position: relative;
+
+    width: 210px;
+    height: 360px;
+
+    padding: 0;
+
+    border: none;
+    border-radius: 12px;
+
+    background: transparent;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+
+    cursor: pointer;
+    overflow: visible;
+
+    transition:
+        transform 0.5s ease,
+        filter 0.5s ease;
+}
+
+.door:hover {
+    background: transparent;
+    color: white;
+    transform: translateY(-18px);
+}
+
+
+/* =====================================================
+   DOOR FRAME
+===================================================== */
+
+.door-frame {
+    position: absolute;
+
+    bottom: 35px;
+    left: 15px;
+    right: 15px;
+    top: 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            #171717,
+            #555,
+            #171717
+        );
+
+    border-radius: 12px 12px 4px 4px;
+
+    padding: 10px;
+
+    box-shadow:
+        0 0 0 2px #222,
+        0 15px 30px rgba(0,0,0,0.8),
+        inset 0 0 20px rgba(255,255,255,0.08);
+}
+
+
+/* =====================================================
+   DOOR PANEL
+===================================================== */
+
+.door-panel {
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+
+    border-radius: 7px 7px 2px 2px;
+
+    background:
+        linear-gradient(
+            110deg,
+            #171717,
+            #3a3a3a,
+            #111
+        );
+
+    border: 3px solid #111;
+
+    box-shadow:
+        inset 0 0 25px rgba(0,0,0,0.8),
+        inset 5px 0 10px rgba(255,255,255,0.05);
+
+    transition:
+        transform 0.5s ease;
+}
+
+.door-panel::before {
+    content: "";
 
     position: absolute;
 
-    bottom: 10px;
+    left: 18%;
+    right: 18%;
+    top: 15%;
 
-    left: 50%;
+    height: 28%;
 
-    transform:
-        translateX(-50%);
+    border:
+        2px solid
+        rgba(255,255,255,0.12);
 
-    width: 40px;
+    border-radius: 4px;
+}
 
-    height: 40px;
+.door-panel::after {
+    content: "";
+
+    position: absolute;
+
+    left: 18%;
+    right: 18%;
+    bottom: 15%;
+
+    height: 28%;
+
+    border:
+        2px solid
+        rgba(255,255,255,0.12);
+
+    border-radius: 4px;
+}
+
+
+/* =====================================================
+   DOOR HANDLE
+===================================================== */
+
+.door-knob {
+    position: absolute;
+
+    right: 13%;
+    top: 52%;
+
+    width: 14px;
+    height: 14px;
 
     border-radius: 50%;
 
-    background-color:
-        rgba(0, 0, 0, 0.8);
+    background:
+        radial-gradient(
+            circle at 30% 30%,
+            #fff,
+            #aaa 35%,
+            #555 70%
+        );
 
-    display: flex;
-
-    justify-content: center;
-
-    align-items: center;
-
-    font-size: 20px;
-
-    font-weight: bold;
-
+    box-shadow:
+        0 0 8px
+        rgba(255,255,255,0.3);
 }
 
 
 /* =====================================================
-   MEMORY QUESTION
+   LIGHT ABOVE DOOR
 ===================================================== */
 
-#memory-question {
+.door-top-light {
+    position: absolute;
+
+    top: -20px;
+    left: 25%;
+
+    width: 50%;
+    height: 20px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255,255,255,0.15);
+
+    filter: blur(8px);
+
+    animation:
+        doorGlow 3s infinite alternate;
+}
+
+
+/* =====================================================
+   DIFFERENT DOOR MOODS
+===================================================== */
+
+.door:nth-child(1) .door-panel {
+    background:
+        linear-gradient(
+            120deg,
+            #080808,
+            #292929,
+            #050505
+        );
+}
+
+.door:nth-child(2) .door-panel {
+    background:
+        linear-gradient(
+            120deg,
+            #2b1018,
+            #6d2639,
+            #18070d
+        );
+}
+
+.door:nth-child(3) .door-panel {
+    background:
+        linear-gradient(
+            120deg,
+            #081b24,
+            #155c73,
+            #061116
+        );
+}
+
+
+/* =====================================================
+   DOOR LABEL
+===================================================== */
+
+.door > span {
+    position: relative;
+    z-index: 5;
+
+    margin-bottom: 0;
+
+    font-size: 19px;
+    font-weight: bold;
+
+    text-shadow:
+        0 2px 8px black;
+}
+
+
+/* =====================================================
+   DOOR HOVER
+===================================================== */
+
+.door:hover .door-panel {
+    transform:
+        perspective(600px)
+        rotateY(-8deg);
+}
+
+.door:nth-child(2):hover .door-panel {
+    box-shadow:
+        inset 0 0 35px
+        rgba(255,80,120,0.3),
+
+        0 0 30px
+        rgba(255,80,120,0.2);
+}
+
+.door:nth-child(3):hover .door-panel {
+    box-shadow:
+        inset 0 0 35px
+        rgba(50,200,255,0.3),
+
+        0 0 30px
+        rgba(50,200,255,0.2);
+}
+
+
+/* =====================================================
+   DOOR RESULT
+===================================================== */
+
+#door-result {
+    margin-top: 25px;
+    max-width: 700px;
+    font-size: 20px;
+    line-height: 1.8;
+}
+
+
+/* =====================================================
+   DOOR 1 ROOM
+===================================================== */
+
+#door-one-room {
+    display: none;
+
+    position: fixed;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100vh;
+
+    background: #000;
+
+    overflow: hidden;
+
+    z-index: 1000;
+
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+/* =====================================================
+   ROOM LIGHT
+===================================================== */
+
+.room-light {
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    width: 10px;
+    height: 10px;
+
+    background: white;
+
+    border-radius: 50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    box-shadow:
+        0 0 30px white,
+        0 0 80px white,
+        0 0 150px white;
+
+    animation:
+        roomEnter 2s ease forwards;
+}
+
+
+/* =====================================================
+   DOOR OPENING
+===================================================== */
+
+.door-opening-animation {
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        radial-gradient(
+            circle at center,
+            transparent 0%,
+            #000 5%,
+            #000 100%
+        );
+
+    animation:
+        roomReveal 2.5s ease forwards;
+}
+
+@keyframes roomReveal {
+
+    0% {
+        background:
+            radial-gradient(
+                circle at center,
+                white 0%,
+                #000 0%
+            );
+    }
+
+    100% {
+        background:
+            radial-gradient(
+                circle at center,
+                transparent 45%,
+                #000 100%
+            );
+    }
+}
+
+@keyframes roomEnter {
+
+    0% {
+        width: 5px;
+        height: 5px;
+        opacity: 1;
+    }
+
+    100% {
+        width: 200vw;
+        height: 200vw;
+        opacity: 0;
+    }
+}
+
+
+/* =====================================================
+   DOOR ONE CONTENT
+===================================================== */
+
+.door-one-content {
+    position: relative;
+
+    z-index: 5;
+
+    max-width: 700px;
+
+    padding: 30px;
+
+    text-align: center;
+
+    opacity: 0;
+
+    animation:
+        doorOneContent 1.5s ease forwards;
+
+    animation-delay: 1.8s;
+}
+
+@keyframes doorOneContent {
+
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.door-one-content h2 {
+    font-size: 42px;
+    margin-bottom: 25px;
+}
+
+.door-one-content p {
+    font-size: 19px;
+    line-height: 1.8;
+}
+
+#view-heart-button {
+    margin-top: 25px;
+}
+
+
+/* =====================================================
+   HEART PICTURE
+===================================================== */
+
+#heart-picture-section {
+    display: none;
+
+    position: relative;
+
+    z-index: 10;
+
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 30px;
+
+    width: 100%;
+    height: 100%;
+}
+
+#heart-picture-section h2 {
+    font-size: 32px;
+    margin-bottom: 25px;
+}
+
+#heart-taker-image {
+    max-width: 80vw;
+    max-height: 55vh;
+
+    object-fit: contain;
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 0 30px rgba(255,255,255,0.25),
+        0 0 80px rgba(255,50,100,0.15);
+
+    animation:
+        pictureAppear 1.5s ease forwards;
+}
+
+@keyframes pictureAppear {
+
+    from {
+        opacity: 0;
+        transform: scale(0.7);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+#heart-picture-section p {
+    font-size: 18px;
+    margin-top: 20px;
+}
+
+#back-to-doors-button {
+    margin-top: 20px;
+}
+
+
+/* =====================================================
+   🚪 DOOR 2 — MEMORY ROOM
+===================================================== */
+
+#door-two-room {
+    display: none;
+
+    position: fixed;
+    inset: 0;
+
+    width: 100%;
+    height: 100vh;
+
+    z-index: 2000;
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #260c17 0%,
+            #0d0408 48%,
+            #000 100%
+        );
+
+    color: white;
+
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+.door-two-memory-content {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+
+    padding: 10px 14px 14px;
+    overflow: hidden;
+}
+
+
+#door-two-intro {
+    width: 100%;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+
+#door-two-intro h2 {
+    margin: 0 0 3px;
+    font-size: 24px;
+
+    text-shadow:
+        0 0 18px
+        rgba(255,80,130,0.5);
+}
+
+
+#door-two-intro p {
+    margin: 0;
+    font-size: 11px;
+    opacity: 0.72;
+}
+
+
+.memory-wall-title {
+    width: 100%;
+    text-align: center;
+    margin: 4px 0 6px;
+    flex-shrink: 0;
+}
+
+
+.memory-wall-title h2 {
+    margin: 0;
+    font-size: 20px;
+
+    text-shadow:
+        0 0 15px
+        rgba(255,100,150,0.55);
+}
+
+
+/* =====================================================
+   DOOR 2 — 3 × 3 MEMORY WALL
+===================================================== */
+
+#memory-card-wall {
+    width: min(84vw, 780px);
+    height: min(56vh, 440px);
+
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-rows: repeat(3, minmax(0, 1fr));
+    gap: 9px;
+
+    flex-shrink: 0;
+    margin: 0 auto;
+
+    perspective: 1400px;
+}
+
+
+/* =====================================================
+   PHOTO CARD
+===================================================== */
+
+.memory-display-card {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-width: 0;
+    min-height: 0;
+
+    border-radius: 10px;
+    overflow: hidden;
+
+    background: #0b0b0b;
+    border: 1px solid rgba(255,255,255,0.16);
+
+    box-shadow:
+        0 6px 16px rgba(0,0,0,0.65),
+        0 0 10px rgba(255,80,130,0.06);
+
+    perspective: 1100px;
+}
+
+
+.memory-display-card:hover {
+    transform: translateY(-3px) scale(1.01);
+    z-index: 5;
+}
+
+
+/* =====================================================
+   REAL CARD FLIP
+===================================================== */
+
+.memory-display-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+    transform-style: preserve-3d;
+    transition:
+        transform 1.05s cubic-bezier(0.22,0.61,0.36,1);
+}
+
+
+.memory-display-card.flipped .memory-display-inner {
+    transform: rotateY(180deg);
+}
+
+
+.memory-display-front,
+.memory-display-back {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+    border-radius: inherit;
+
+    background: #0b0b0b;
+
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+
+.memory-display-back {
+    transform: rotateY(180deg);
+}
+
+
+/* =====================================================
+   DOOR 2 — FIT PHOTOS TO THE FRAME
+===================================================== */
+
+.memory-display-front img,
+.memory-display-back img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+
+    background: #111;
+}
+
+
+/* =====================================================
+   SOFT CHANGE GLOW
+===================================================== */
+
+.memory-display-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,0.08),
+            transparent 45%,
+            rgba(255,90,140,0.05)
+        );
+
+    opacity: 0.55;
+}
+
+
+/* =====================================================
+   FINISH — HIDE GALLERY
+===================================================== */
+
+#memory-card-wall.door-two-wall-hide {
+    opacity: 0;
+    transform: translateY(-18px) scale(0.97);
+    pointer-events: none;
+    transition:
+        opacity 0.65s ease,
+        transform 0.65s ease;
+}
+
+
+#door-two-final {
+    display: none;
+
+    width: min(700px, 90vw);
+    text-align: center;
+    margin-top: 16px;
+}
+
+
+#door-two-final.show {
+    display: block;
+    animation: doorTwoFinalReveal 0.9s ease forwards;
+}
+
+
+@keyframes doorTwoFinalReveal {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.96);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+
+.door-two-final-message {
+    font-size: 17px;
+    line-height: 1.6;
+    margin: 0;
+}
+
+
+/* =====================================================
+   BACK BUTTON
+===================================================== */
+
+#door-two-back {
+    display: none;
+
+    margin-top: 16px;
+    padding: 11px 24px;
+    font-size: 14px;
+    flex-shrink: 0;
+}
+
+
+/* =====================================================
+   FINISH — HIDE GALLERY
+===================================================== */
+
+#memory-card-wall.door-two-wall-hide {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.96);
+    pointer-events: none;
+}
+
+
+#door-two-final {
+    display: none;
+
+    width: min(700px, 90vw);
+
+    text-align: center;
+
+    margin-top: 16px;
+}
+
+
+#door-two-final.show {
+    display: block;
+
+    animation:
+        doorTwoFinalReveal
+        0.9s
+        ease
+        forwards;
+}
+
+
+@keyframes doorTwoFinalReveal {
+
+    from {
+        opacity: 0;
+        transform: translateY(24px) scale(0.96);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+
+.door-two-final-message {
+    font-size: 17px;
+    line-height: 1.6;
+    margin: 0 0 12px;
+}
+
+
+#door-two-back {
+    display: none;
+
+    margin-top: 8px;
+
+    padding: 11px 24px;
+
+    font-size: 14px;
+
+    flex-shrink: 0;
+}
+
+
+@media (max-width: 700px) {
+
+    .door-two-memory-content {
+        padding: 7px 6px 10px;
+    }
+
+    #door-two-intro h2 {
+        font-size: 20px;
+    }
+
+    #door-two-intro p {
+        font-size: 9px;
+    }
+
+    .memory-wall-title {
+        margin: 3px 0 5px;
+    }
+
+    .memory-wall-title h2 {
+        font-size: 17px;
+    }
+
+    #memory-card-wall {
+        width: 91vw;
+        height: 54vh;
+        gap: 5px;
+
+        grid-template-columns:
+            repeat(3, minmax(0, 1fr));
+
+        grid-template-rows:
+            repeat(3, minmax(0, 1fr));
+    }
+
+    .memory-display-card {
+        border-radius: 6px;
+    }
+
+    .door-two-final-message {
+        font-size: 13px;
+    }
+
+    #door-two-back {
+        padding: 9px 19px;
+        font-size: 12px;
+    }
+}
+
+
+@media (max-width: 400px) {
+
+    #memory-card-wall {
+        width: 92vw;
+        height: 51vh;
+        gap: 4px;
+    }
+
+    #door-two-intro h2 {
+        font-size: 18px;
+    }
+
+    .memory-wall-title h2 {
+        font-size: 15px;
+    }
+}
+
+
+/* =====================================================
+   ❤️ DOOR 3 — MAIN ROOM
+===================================================== */
+
+#door-three-room {
 
     display: none;
 
-    flex-direction: column;
+    position: fixed;
 
-    align-items: center;
+    inset: 0;
 
-    justify-content: center;
+    width: 100%;
+    height: 100vh;
 
-    margin-top: 20px;
+    z-index: 5000;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #250814 0%,
+            #100208 42%,
+            #000 100%
+        );
+
+    color: white;
 
 }
 
 
 /* =====================================================
-   MEMORY ANSWERS
+   DOOR 3 OPENING
 ===================================================== */
 
-.memory-answers {
+#door-three-opening {
+
+    position: absolute;
+
+    inset: 0;
 
     display: flex;
 
-    justify-content: center;
-
     align-items: center;
 
-    gap: 15px;
+    justify-content: center;
 
-    flex-wrap: wrap;
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #fff 0%,
+            #ffb6ca 3%,
+            #4d071d 12%,
+            #090107 45%,
+            #000 100%
+        );
+
+    opacity: 0;
 
 }
 
 
-.memory-answers button {
+.door-three-opening-active {
 
-    min-width: 150px;
+    animation:
+        doorThreeOpening
+        3.6s
+        cubic-bezier(
+            0.16,
+            1,
+            0.3,
+            1
+        )
+        forwards;
+
+}
+
+
+@keyframes doorThreeOpening {
+
+    0% {
+
+        opacity: 0;
+
+        transform:
+            scale(1.5);
+
+    }
+
+    15% {
+
+        opacity: 1;
+
+    }
+
+    55% {
+
+        transform:
+            scale(1);
+
+    }
+
+    100% {
+
+        opacity: 1;
+
+        transform:
+            scale(1);
+
+    }
 
 }
 
 
 /* =====================================================
-   TIMER
+   OPENING LIGHT
 ===================================================== */
 
-#memory-timer {
+.door-three-light {
 
-    margin-top: 25px;
+    position: absolute;
 
-    font-size: 24px;
+    width: 30px;
+    height: 30px;
 
-    font-weight: bold;
+    border-radius: 50%;
+
+    background: white;
+
+    box-shadow:
+        0 0 20px white,
+        0 0 60px #ff7ca8,
+        0 0 140px #ff4f87,
+        0 0 250px #ff1f6d;
+
+    animation:
+        openingLight
+        3s
+        ease-out
+        forwards;
+
+}
+
+
+@keyframes openingLight {
+
+    0% {
+
+        transform:
+            scale(0);
+
+    }
+
+    45% {
+
+        transform:
+            scale(10);
+
+    }
+
+    100% {
+
+        transform:
+            scale(70);
+
+        opacity:
+            0.05;
+
+    }
 
 }
 
 
 /* =====================================================
-   ANIMATION
+   OPENING RINGS
 ===================================================== */
 
-@keyframes fadeIn {
+.door-three-ring {
+
+    position: absolute;
+
+    border:
+        1px solid
+        rgba(255,150,190,0.5);
+
+    border-radius: 50%;
+
+    left: 50%;
+    top: 50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    animation:
+        ringExpand
+        3.5s
+        ease-out
+        infinite;
+
+}
+
+
+.ring-one {
+
+    width: 100px;
+    height: 100px;
+
+}
+
+
+.ring-two {
+
+    width: 300px;
+    height: 300px;
+
+    animation-delay:
+        0.5s;
+
+}
+
+
+.ring-three {
+
+    width: 600px;
+    height: 600px;
+
+    animation-delay:
+        1s;
+
+}
+
+
+@keyframes ringExpand {
+
+    0% {
+
+        opacity: 0;
+
+        transform:
+            translate(-50%, -50%)
+            scale(0.2);
+
+    }
+
+    30% {
+
+        opacity: 1;
+
+    }
+
+    100% {
+
+        opacity: 0;
+
+        transform:
+            translate(-50%, -50%)
+            scale(1.8);
+
+    }
+
+}
+
+
+/* =====================================================
+   OPENING TEXT
+===================================================== */
+
+.door-three-opening-text {
+
+    position: relative;
+
+    z-index: 5;
+
+    text-align: center;
+
+    opacity: 0;
+
+    animation:
+        openingText
+        2s
+        0.8s
+        ease
+        forwards;
+
+}
+
+
+@keyframes openingText {
 
     from {
 
         opacity: 0;
 
         transform:
-            translateY(10px);
+            translateY(30px)
+            scale(0.9);
 
     }
 
@@ -414,6 +1620,108 @@ button:hover {
         opacity: 1;
 
         transform:
+            translateY(0)
+            scale(1);
+
+    }
+
+}
+
+
+.opening-small {
+
+    font-size: 38px;
+
+    margin-bottom: 15px;
+
+    animation:
+        heartbeat
+        1.2s
+        infinite;
+
+}
+
+
+.door-three-opening-text h1 {
+
+    font-size: 48px;
+
+    margin: 0 0 10px;
+
+    text-shadow:
+        0 0 25px
+        rgba(255,130,170,0.8);
+
+}
+
+
+.door-three-opening-text p {
+
+    font-size: 22px;
+
+    opacity: 0.8;
+
+}
+
+
+/* =====================================================
+   DOOR 3 STEPS
+===================================================== */
+
+.door-three-step {
+
+    position: absolute;
+
+    inset: 0;
+
+    display: none;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 25px;
+
+    text-align: center;
+
+    overflow-y: auto;
+
+}
+
+
+.door-three-step.active {
+
+    display: flex;
+
+    animation:
+        stepAppear
+        1s
+        ease
+        forwards;
+
+}
+
+
+@keyframes stepAppear {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            scale(0.96)
+            translateY(20px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            scale(1)
             translateY(0);
 
     }
@@ -422,180 +1730,2286 @@ button:hover {
 
 
 /* =====================================================
-   MOBILE
+   CAMERA INTRO ORBIT
 ===================================================== */
 
-@media (
-    max-width: 600px
-) {
-
-    h1 {
-
-        font-size: 30px;
-
-    }
-
-
-    h2 {
-
-        font-size: 25px;
-
-    }
-
-
-    .memory-card {
-
-        width: 130px;
-
-        height: 170px;
-
-    }
-
-
-    .memory-answers {
-
-        flex-direction: column;
-
-    }
-
-
-    .memory-answers button {
-
-        width: 220px;
-
-    }
-
-}
-/* =====================================================
-   HUMAN VERIFICATION
-===================================================== */
-
-#human-verification-screen {
-
-    display: none;
-
-    flex-direction: column;
-
-    justify-content: center;
-
-    align-items: center;
-
-    width: 100%;
-
-    min-height: 100vh;
-
-    animation:
-        fadeIn 1s ease-in-out;
-
-}
-
-
-/* =====================================================
-   HUMAN PUZZLE
-===================================================== */
-
-#human-puzzle {
+.verification-orbit {
 
     position: relative;
 
-    width: 600px;
+    width: 150px;
+    height: 150px;
 
-    max-width: 90vw;
+    margin-bottom: 25px;
 
-    height: 400px;
+}
 
-    margin-top: 25px;
 
-    border: 1px solid
-        rgba(255, 255, 255, 0.4);
+.orbit-ring {
 
-    border-radius: 15px;
+    position: absolute;
 
-    overflow: hidden;
+    inset: 0;
 
-    background-color: #111;
+    border-radius: 50%;
+
+    border:
+        1px solid
+        rgba(255,120,160,0.45);
+
+    animation:
+        orbitSpin
+        5s
+        linear
+        infinite;
+
+}
+
+
+.orbit-one {
+
+    transform:
+        rotateX(65deg);
+
+}
+
+
+.orbit-two {
+
+    transform:
+        rotateY(65deg);
+
+    animation-direction:
+        reverse;
+
+}
+
+
+.orbit-three {
+
+    transform:
+        rotateX(65deg)
+        rotateY(65deg);
+
+    animation-duration:
+        7s;
+
+}
+
+
+@keyframes orbitSpin {
+
+    from {
+
+        transform:
+            rotate(0deg);
+
+    }
+
+    to {
+
+        transform:
+            rotate(360deg);
+
+    }
+
+}
+
+
+.camera-icon {
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    width: 80px;
+    height: 80px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            #ff739e,
+            #7b163c
+        );
+
+    font-size: 38px;
+
+    box-shadow:
+        0 0 30px
+        rgba(255,70,130,0.7),
+
+        inset 0 0 20px
+        rgba(255,255,255,0.2);
+
+    animation:
+        cameraPulse
+        2s
+        ease-in-out
+        infinite;
+
+}
+
+
+@keyframes cameraPulse {
+
+    0%,
+    100% {
+
+        transform:
+            translate(-50%, -50%)
+            scale(1);
+
+    }
+
+    50% {
+
+        transform:
+            translate(-50%, -50%)
+            scale(1.08);
+
+    }
 
 }
 
 
 /* =====================================================
-   BACKGROUND IMAGE
+   CAMERA TEXT
 ===================================================== */
 
-#human-background {
+.door-three-step h2 {
+
+    font-size: 32px;
+
+    margin:
+        10px 0;
+
+    text-shadow:
+        0 0 20px
+        rgba(255,120,160,0.5);
+
+}
+
+
+.door-three-step > p {
+
+    line-height: 1.6;
+
+    margin:
+        5px 0;
+
+}
+
+
+.door-three-subtitle {
+
+    font-size: 19px;
+
+    opacity: 0.8;
+
+}
+
+
+.special-action-button {
+
+    margin-top: 25px;
+
+    border:
+        1px solid
+        rgba(255,140,180,0.8);
+
+    background:
+        rgba(255,70,130,0.1);
+
+    box-shadow:
+        0 0 25px
+        rgba(255,70,130,0.25);
+
+}
+
+
+.special-action-button:hover {
+
+    background:
+        #fff;
+
+    color:
+        #250814;
+
+}
+
+
+/* =====================================================
+   ERROR
+===================================================== */
+
+.door-three-error {
+
+    max-width: 600px;
+
+    margin-top: 18px;
+
+}
+
+
+.error-box {
+
+    padding:
+        12px 18px;
+
+    border-radius:
+        12px;
+
+    background:
+        rgba(255,40,80,0.12);
+
+    border:
+        1px solid
+        rgba(255,100,130,0.4);
+
+    color:
+        #ffb5c7;
+
+    font-size:
+        14px;
+
+}
+
+
+/* =====================================================
+   CAMERA FRAME
+===================================================== */
+
+.camera-frame {
+
+    position: relative;
+
+    width:
+        min(680px, 88vw);
+
+    height:
+        min(470px, 62vh);
+
+    border-radius:
+        24px;
+
+    overflow:
+        hidden;
+
+    background:
+        #050505;
+
+    border:
+        2px solid
+        rgba(255,130,170,0.5);
+
+    box-shadow:
+        0 0 30px
+        rgba(255,60,130,0.25),
+
+        0 0 100px
+        rgba(255,40,100,0.1);
+
+}
+
+
+#door-three-video {
 
     width: 100%;
-
     height: 100%;
 
     object-fit: cover;
 
+    transform:
+        scaleX(-1);
+
 }
 
 
 /* =====================================================
-   DRAGGABLE PIECE
+   CAMERA OVERLAY
 ===================================================== */
 
-#human-piece {
+.camera-overlay {
 
     position: absolute;
 
-    width: 120px;
+    inset: 0;
 
-    height: 120px;
-
-    object-fit: cover;
-
-    border-radius: 10px;
-
-    cursor: grab;
-
-    border: 2px solid white;
-
-    left: 20px;
-
-    top: 20px;
-
-    transition:
-        box-shadow 0.2s ease;
+    pointer-events:
+        none;
 
 }
 
 
-#human-piece:active {
+.scan-line {
 
-    cursor: grabbing;
+    position: absolute;
+
+    left: 5%;
+    right: 5%;
+
+    height: 2px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #ff8bb0,
+            transparent
+        );
+
+    box-shadow:
+        0 0 15px
+        #ff6d9b;
+
+    animation:
+        scanMove
+        2.4s
+        ease-in-out
+        infinite;
+
+}
+
+
+@keyframes scanMove {
+
+    0% {
+
+        top: 10%;
+
+    }
+
+    50% {
+
+        top: 90%;
+
+    }
+
+    100% {
+
+        top: 10%;
+
+    }
+
+}
+
+
+.scan-corner {
+
+    position: absolute;
+
+    width: 50px;
+    height: 50px;
+
+    border-color:
+        #ff86ad;
+
+    border-style:
+        solid;
+
+}
+
+
+.top-left {
+
+    left: 25px;
+    top: 25px;
+
+    border-width:
+        3px 0 0 3px;
+
+}
+
+
+.top-right {
+
+    right: 25px;
+    top: 25px;
+
+    border-width:
+        3px 3px 0 0;
+
+}
+
+
+.bottom-left {
+
+    left: 25px;
+    bottom: 25px;
+
+    border-width:
+        0 0 3px 3px;
+
+}
+
+
+.bottom-right {
+
+    right: 25px;
+    bottom: 25px;
+
+    border-width:
+        0 3px 3px 0;
+
+}
+
+
+.scan-text {
+
+    position: absolute;
+
+    bottom: 25px;
+
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+    padding:
+        8px 18px;
+
+    border-radius:
+        20px;
+
+    background:
+        rgba(0,0,0,0.65);
+
+    font-size:
+        13px;
+
+    letter-spacing:
+        4px;
+
+    animation:
+        scanBlink
+        1s
+        infinite alternate;
+
+}
+
+
+@keyframes scanBlink {
+
+    from {
+        opacity: 0.45;
+    }
+
+    to {
+        opacity: 1;
+    }
+
+}
+
+
+.scan-status {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin-top: 20px;
+
+    font-size:
+        16px;
+
+}
+
+
+.status-dot {
+
+    width: 10px;
+    height: 10px;
+
+    border-radius: 50%;
+
+    background:
+        #ff739e;
+
+    box-shadow:
+        0 0 15px
+        #ff739e;
+
+    animation:
+        statusPulse
+        1s
+        infinite;
+
+}
+
+
+@keyframes statusPulse {
+
+    0%,
+    100% {
+
+        opacity: 0.3;
+
+    }
+
+    50% {
+
+        opacity: 1;
+
+    }
+
+}
+
+
+/* =====================================================
+   VOICE STEP
+===================================================== */
+
+.voice-glow {
+
+    position: relative;
+
+    width: 100px;
+    height: 100px;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    margin-bottom: 10px;
+
+}
+
+
+.voice-mic {
+
+    width: 75px;
+    height: 75px;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    font-size: 35px;
+
+    background:
+        radial-gradient(
+            circle,
+            #ff6f9d,
+            #721333
+        );
 
     box-shadow:
         0 0 25px
-        rgba(255, 255, 255, 0.5);
+        rgba(255,80,140,0.7);
+
+    animation:
+        micPulse
+        1.6s
+        ease-in-out
+        infinite;
+
+}
+
+
+.voice-glow::before,
+.voice-glow::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    border-radius: 50%;
+
+    border:
+        1px solid
+        rgba(255,110,160,0.45);
+
+    animation:
+        micWave
+        2s
+        ease-out
+        infinite;
+
+}
+
+
+.voice-glow::after {
+
+    animation-delay:
+        0.7s;
+
+}
+
+
+@keyframes micPulse {
+
+    0%,
+    100% {
+
+        transform:
+            scale(1);
+
+    }
+
+    50% {
+
+        transform:
+            scale(1.08);
+
+    }
+
+}
+
+
+@keyframes micWave {
+
+    from {
+
+        transform:
+            scale(0.7);
+
+        opacity:
+            0.8;
+
+    }
+
+    to {
+
+        transform:
+            scale(1.6);
+
+        opacity:
+            0;
+
+    }
 
 }
 
 
 /* =====================================================
-   INSTRUCTION
+   LOVE MESSAGE CARD
 ===================================================== */
 
-.human-hint {
+.love-message-card {
 
-    font-size: 17px;
+    position: relative;
 
-    opacity: 0.9;
+    width:
+        min(600px, 90vw);
+
+    margin:
+        18px auto;
+
+    padding:
+        22px 30px;
+
+    border-radius:
+        22px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,70,120,0.14),
+            rgba(255,255,255,0.04)
+        );
+
+    border:
+        1px solid
+        rgba(255,130,170,0.35);
+
+    box-shadow:
+        0 0 35px
+        rgba(255,70,130,0.12);
+
+    animation:
+        messageGlow
+        2.5s
+        ease-in-out
+        infinite alternate;
+
+}
+
+
+@keyframes messageGlow {
+
+    from {
+
+        box-shadow:
+            0 0 20px
+            rgba(255,70,130,0.12);
+
+    }
+
+    to {
+
+        box-shadow:
+            0 0 50px
+            rgba(255,70,130,0.28);
+
+    }
+
+}
+
+
+.love-message-card p {
+
+    margin:
+        6px 0;
+
+    font-size:
+        22px;
+
+    font-weight:
+        bold;
+
+    letter-spacing:
+        1px;
+
+}
+
+
+.message-sparkle {
+
+    position: absolute;
+
+    color:
+        #ff9abc;
+
+    animation:
+        sparkleFloat
+        2s
+        infinite alternate;
+
+}
+
+
+.sparkle-one {
+
+    left: 15px;
+    top: 12px;
+
+}
+
+
+.sparkle-two {
+
+    right: 20px;
+    top: 25px;
+
+    animation-delay:
+        0.7s;
+
+}
+
+
+.sparkle-three {
+
+    left: 50%;
+    bottom: 5px;
+
+    animation-delay:
+        1.1s;
+
+}
+
+
+@keyframes sparkleFloat {
+
+    from {
+
+        transform:
+            translateY(0)
+            scale(0.8);
+
+        opacity:
+            0.3;
+
+    }
+
+    to {
+
+        transform:
+            translateY(-8px)
+            scale(1.2);
+
+        opacity:
+            1;
+
+    }
+
+}
+
+
+.speak-instruction {
+
+    font-size:
+        16px;
+
+    opacity:
+        0.8;
 
 }
 
 
 /* =====================================================
-   RESULT
+   VOICE VISUALIZER
 ===================================================== */
 
-#human-result {
+#voice-visualizer {
 
-    margin-top: 25px;
+    display:
+        flex;
 
-    font-size: 20px;
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    gap:
+        6px;
+
+    height:
+        95px;
+
+    width:
+        min(500px, 90vw);
+
+    margin:
+        8px auto;
+
+}
+
+
+.voice-bar {
+
+    width:
+        8px;
+
+    height:
+        12px;
+
+    border-radius:
+        10px;
+
+    background:
+        linear-gradient(
+            to top,
+            #ff397d,
+            #ffb1ca
+        );
+
+    box-shadow:
+        0 0 12px
+        rgba(255,70,130,0.7);
+
+    transition:
+        height
+        0.08s
+        linear;
+
+}
+
+
+#voice-status {
+
+    font-size:
+        16px;
+
+    min-height:
+        25px;
+
+}
+
+
+#voice-progress {
+
+    width:
+        min(420px, 80vw);
+
+    height:
+        6px;
+
+    background:
+        rgba(255,255,255,0.1);
+
+    border-radius:
+        20px;
+
+    overflow:
+        hidden;
+
+    margin-top:
+        8px;
+
+}
+
+
+#voice-progress-fill {
+
+    width:
+        0%;
+
+    height:
+        100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ff3e7e,
+            #ffb0ca
+        );
+
+    box-shadow:
+        0 0 12px
+        #ff4d88;
+
+    transition:
+        width
+        0.1s
+        linear;
+
+}
+
+
+#voice-hint {
+
+    margin-top:
+        10px;
+
+    font-size:
+        13px;
+
+    opacity:
+        0.55;
+
+}
+
+
+/* =====================================================
+   VOICE SUCCESS
+===================================================== */
+
+#door-three-success {
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,80,130,0.18),
+            transparent 55%
+        );
+
+}
+
+
+.success-heart {
+
+    font-size:
+        85px;
+
+    animation:
+        successHeart
+        1s
+        ease-in-out
+        infinite;
+
+    filter:
+        drop-shadow(
+            0 0 30px
+            rgba(255,70,130,0.8)
+        );
+
+}
+
+
+@keyframes successHeart {
+
+    0%,
+    100% {
+
+        transform:
+            scale(1);
+
+    }
+
+    50% {
+
+        transform:
+            scale(1.2);
+
+    }
+
+}
+
+
+.success-ring {
+
+    position: absolute;
+
+    width:
+        180px;
+
+    height:
+        180px;
+
+    border:
+        2px solid
+        rgba(255,110,160,0.4);
+
+    border-radius:
+        50%;
+
+    animation:
+        successRing
+        1.8s
+        ease-out
+        infinite;
+
+}
+
+
+@keyframes successRing {
+
+    from {
+
+        transform:
+            scale(0.4);
+
+        opacity:
+            1;
+
+    }
+
+    to {
+
+        transform:
+            scale(1.8);
+
+        opacity:
+            0;
+
+    }
+
+}
+
+
+.success-check {
+
+    margin-top:
+        15px;
+
+    width:
+        45px;
+
+    height:
+        45px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    border:
+        2px solid
+        #ff83ac;
+
+    border-radius:
+        50%;
+
+    color:
+        #ffb2ca;
+
+    font-size:
+        25px;
+
+}
+
+
+/* =====================================================
+   ANNIVERSARY FINALE
+===================================================== */
+
+#anniversary-finale {
+
+    position:
+        absolute;
+
+    inset:
+        0;
+
+    display:
+        none;
+
+    overflow-y:
+        auto;
+
+    overflow-x:
+        hidden;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #39091d 0%,
+            #16030c 35%,
+            #030002 75%,
+            #000 100%
+        );
+
+}
+
+
+#anniversary-finale.active {
+
+    display:
+        block;
+
+    animation:
+        finaleAppear
+        2s
+        ease
+        forwards;
+
+}
+
+
+@keyframes finaleAppear {
+
+    from {
+
+        opacity:
+            0;
+
+    }
+
+    to {
+
+        opacity:
+            1;
+
+    }
+
+}
+
+
+/* =====================================================
+   FINALE CONTENT
+===================================================== */
+
+.finale-content {
+
+    position:
+        relative;
+
+    z-index:
+        20;
+
+    min-height:
+        100vh;
+
+    padding:
+        70px 20px 120px;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    align-items:
+        center;
+
+    text-align:
+        center;
+
+}
+
+
+.finale-small-heart {
+
+    font-size:
+        28px;
+
+    animation:
+        heartbeat
+        1.2s
+        infinite;
+
+}
+
+
+.finale-line {
+
+    opacity:
+        0;
+
+    transform:
+        translateY(20px);
+
+    transition:
+        all
+        1s
+        ease;
+
+    font-size:
+        20px;
+
+    margin:
+        5px;
+
+}
+
+
+.finale-line.visible {
+
+    opacity:
+        1;
+
+    transform:
+        translateY(0);
+
+}
+
+
+/* =====================================================
+   MAIN HEART
+===================================================== */
+
+.finale-main-heart {
+
+    opacity:
+        0;
+
+    transform:
+        scale(0);
+
+    font-size:
+        100px;
+
+    margin:
+        15px 0;
+
+    transition:
+        all
+        1.5s
+        cubic-bezier(
+            0.175,
+            0.885,
+            0.32,
+            1.275
+        );
+
+    filter:
+        drop-shadow(
+            0 0 30px
+            #ff3f7d
+        );
+
+}
+
+
+.finale-main-heart.visible {
+
+    opacity:
+        1;
+
+    transform:
+        scale(1);
+
+    animation:
+        heartGlow
+        1.5s
+        ease-in-out
+        infinite alternate;
+
+}
+
+
+@keyframes heartGlow {
+
+    from {
+
+        filter:
+            drop-shadow(
+                0 0 20px
+                #ff3f7d
+            );
+
+    }
+
+    to {
+
+        filter:
+            drop-shadow(
+                0 0 65px
+                #ff7fa8
+            );
+
+    }
+
+}
+
+
+/* =====================================================
+   ANNIVERSARY TITLE
+===================================================== */
+
+.anniversary-title {
+
+    opacity:
+        0;
+
+    transform:
+        translateY(35px)
+        scale(0.8);
+
+    transition:
+        all
+        1.5s
+        cubic-bezier(
+            0.175,
+            0.885,
+            0.32,
+            1.275
+        );
+
+    margin:
+        10px 0;
+
+}
+
+
+.anniversary-title.visible {
+
+    opacity:
+        1;
+
+    transform:
+        translateY(0)
+        scale(1);
+
+}
+
+
+.anniversary-title span {
+
+    display:
+        block;
+
+}
+
+
+.anniversary-title span:first-child {
+
+    font-size:
+        clamp(28px, 5vw, 55px);
+
+    letter-spacing:
+        10px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #fff,
+            #ffb4ca,
+            #fff
+        );
+
+    background-size:
+        200%;
+
+    -webkit-background-clip:
+        text;
+
+    background-clip:
+        text;
+
+    color:
+        transparent;
+
+    animation:
+        titleShimmer
+        3s
+        linear
+        infinite;
+
+}
+
+
+.anniversary-title span:last-child {
+
+    font-size:
+        clamp(42px, 8vw, 90px);
+
+    letter-spacing:
+        3px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ff719d,
+            #fff,
+            #ff719d
+        );
+
+    background-size:
+        200%;
+
+    -webkit-background-clip:
+        text;
+
+    background-clip:
+        text;
+
+    color:
+        transparent;
+
+    animation:
+        titleShimmer
+        3s
+        linear
+        infinite;
+
+}
+
+
+@keyframes titleShimmer {
+
+    from {
+
+        background-position:
+            0%;
+
+    }
+
+    to {
+
+        background-position:
+            200%;
+
+    }
+
+}
+
+
+/* =====================================================
+   MY LOVE
+===================================================== */
+
+.anniversary-love {
+
+    opacity:
+        0;
+
+    transform:
+        translateY(20px);
+
+    transition:
+        all
+        1s
+        ease;
+
+    color:
+        #ffabc4;
+
+    letter-spacing:
+        8px;
+
+    font-size:
+        clamp(20px, 4vw, 35px);
+
+    text-shadow:
+        0 0 25px
+        rgba(255,90,140,0.8);
+
+}
+
+
+.anniversary-love.visible {
+
+    opacity:
+        1;
+
+    transform:
+        translateY(0);
+
+}
+
+
+/* =====================================================
+   DIVIDER
+===================================================== */
+
+.finale-divider {
+
+    opacity:
+        0;
+
+    margin:
+        15px 0;
+
+    letter-spacing:
+        15px;
+
+    color:
+        #ff8eaf;
+
+    transition:
+        opacity
+        1s
+        ease;
+
+}
+
+
+.finale-divider.visible {
+
+    opacity:
+        1;
+
+}
+
+
+/* =====================================================
+   ANNIVERSARY MESSAGES
+===================================================== */
+
+.anniversary-message {
+
+    max-width:
+        650px;
+
+    font-size:
+        18px;
+
+    line-height:
+        1.9;
+
+    opacity:
+        0;
+
+    transform:
+        translateY(20px);
+
+    transition:
+        all
+        1.2s
+        ease;
+
+}
+
+
+.anniversary-message.visible {
+
+    opacity:
+        0.9;
+
+    transform:
+        translateY(0);
+
+}
+
+
+.anniversary-message.second {
+
+    font-size:
+        17px;
+
+    color:
+        #ffd9e4;
+
+}
+
+
+/* =====================================================
+   FINALE MEMORY PHOTOS
+===================================================== */
+
+#finale-memory-photos {
+
+    display:
+        flex;
+
+    flex-wrap:
+        wrap;
+
+    justify-content:
+        center;
+
+    gap:
+        18px;
+
+    max-width:
+        900px;
+
+    margin:
+        35px auto;
+
+}
+
+
+.finale-photo-card {
+
+    width:
+        150px;
+
+    height:
+        180px;
+
+    padding:
+        8px 8px 25px;
+
+    background:
+        #fff;
+
+    box-shadow:
+        0 15px 30px
+        rgba(0,0,0,0.5);
+
+    transform:
+        rotate(var(--photo-rotate));
+
+    opacity:
+        0;
+
+    animation:
+        photoAppear
+        1s
+        var(--photo-delay)
+        cubic-bezier(
+            0.175,
+            0.885,
+            0.32,
+            1.275
+        )
+        forwards;
+
+}
+
+
+.finale-photo-card img {
+
+    width:
+        100%;
+
+    height:
+        100%;
+
+    object-fit:
+        cover;
+
+}
+
+
+@keyframes photoAppear {
+
+    from {
+
+        opacity:
+            0;
+
+        transform:
+            translateY(60px)
+            rotate(var(--photo-rotate))
+            scale(0.7);
+
+    }
+
+    to {
+
+        opacity:
+            1;
+
+        transform:
+            translateY(0)
+            rotate(var(--photo-rotate))
+            scale(1);
+
+    }
+
+}
+
+
+/* =====================================================
+   FINAL MESSAGE
+===================================================== */
+
+.finale-last-message {
+
+    opacity:
+        0;
+
+    transform:
+        translateY(25px);
+
+    transition:
+        all
+        1.5s
+        ease;
+
+    margin-top:
+        20px;
+
+    font-size:
+        20px;
+
+}
+
+
+.finale-last-message.visible {
+
+    opacity:
+        1;
+
+    transform:
+        translateY(0);
+
+}
+
+
+.finale-last-message span {
+
+    display:
+        block;
+
+    opacity:
+        0.7;
+
+    margin-bottom:
+        8px;
+
+}
+
+
+.finale-last-message strong {
+
+    display:
+        block;
+
+    font-size:
+        30px;
+
+    color:
+        #ff9fbb;
+
+    text-shadow:
+        0 0 25px
+        rgba(255,80,130,0.7);
+
+}
+
+
+/* =====================================================
+   FINAL BUTTON
+===================================================== */
+
+#finale-heart-button {
+
+    opacity:
+        0;
+
+    margin-top:
+        40px;
+
+    border:
+        1px solid
+        rgba(255,140,180,0.7);
+
+    background:
+        rgba(255,80,130,0.08);
+
+    transition:
+        all
+        1s
+        ease;
+
+}
+
+
+#finale-heart-button.visible {
+
+    opacity:
+        1;
+
+}
+
+
+#finale-heart-button:hover {
+
+    background:
+        white;
+
+    color:
+        #400a20;
+
+    box-shadow:
+        0 0 30px
+        rgba(255,80,140,0.7);
+
+}
+
+
+/* =====================================================
+   FINAL SURPRISE
+===================================================== */
+
+#finale-surprise {
+
+    display:
+        none;
+
+    margin-top:
+        30px;
+
+    font-size:
+        26px;
+
+    line-height:
+        1.7;
+
+    color:
+        #ffabc4;
+
+    text-shadow:
+        0 0 30px
+        rgba(255,70,130,0.8);
+
+}
+
+
+#finale-surprise.show {
+
+    display:
+        block;
+
+    animation:
+        surpriseReveal
+        1.5s
+        cubic-bezier(
+            0.175,
+            0.885,
+            0.32,
+            1.275
+        );
+
+}
+
+
+@keyframes surpriseReveal {
+
+    from {
+
+        opacity:
+            0;
+
+        transform:
+            scale(0.4);
+
+    }
+
+    to {
+
+        opacity:
+            1;
+
+        transform:
+            scale(1);
+
+    }
+
+}
+
+
+/* =====================================================
+   FINALE STARS
+===================================================== */
+
+#finale-stars {
+
+    position:
+        absolute;
+
+    inset:
+        0;
+
+    pointer-events:
+        none;
+
+}
+
+
+.finale-star {
+
+    position:
+        absolute;
+
+    width:
+        3px;
+
+    height:
+        3px;
+
+    border-radius:
+        50%;
+
+    background:
+        white;
+
+    box-shadow:
+        0 0 8px
+        white;
+
+    animation:
+        starTwinkle
+        3s
+        infinite
+        alternate;
+
+}
+
+
+@keyframes starTwinkle {
+
+    from {
+
+        opacity:
+            0.15;
+
+        transform:
+            scale(0.5);
+
+    }
+
+    to {
+
+        opacity:
+            1;
+
+        transform:
+            scale(1.5);
+
+    }
+
+}
+
+
+/* =====================================================
+   FLOATING HEARTS
+===================================================== */
+
+#finale-hearts {
+
+    position:
+        absolute;
+
+    inset:
+        0;
+
+    pointer-events:
+        none;
+
+    overflow:
+        hidden;
+
+}
+
+
+.floating-final-heart {
+
+    position:
+        absolute;
+
+    bottom:
+        -50px;
+
+    opacity:
+        0;
+
+    animation:
+        floatingHeart
+        10s
+        linear
+        infinite;
+
+}
+
+
+@keyframes floatingHeart {
+
+    0% {
+
+        transform:
+            translateY(0)
+            rotate(0deg);
+
+        opacity:
+            0;
+
+    }
+
+    10% {
+
+        opacity:
+            0.8;
+
+    }
+
+    80% {
+
+        opacity:
+            0.6;
+
+    }
+
+    100% {
+
+        transform:
+            translateY(-110vh)
+            rotate(360deg);
+
+        opacity:
+            0;
+
+    }
+
+}
+
+
+/* =====================================================
+   CONFETTI
+===================================================== */
+
+#finale-confetti {
+
+    position:
+        absolute;
+
+    inset:
+        0;
+
+    pointer-events:
+        none;
+
+    overflow:
+        hidden;
+
+}
+
+
+.confetti-piece {
+
+    position:
+        absolute;
+
+    top:
+        -30px;
+
+    animation:
+        confettiFall
+        7s
+        linear
+        infinite;
+
+}
+
+
+@keyframes confettiFall {
+
+    0% {
+
+        transform:
+            translateY(0)
+            rotate(0deg);
+
+        opacity:
+            0;
+
+    }
+
+    10% {
+
+        opacity:
+            1;
+
+    }
+
+    100% {
+
+        transform:
+            translateY(110vh)
+            rotate(720deg);
+
+        opacity:
+            0;
+
+    }
+
+}
+
+
+/* =====================================================
+   HEART BURST
+===================================================== */
+
+#heart-burst {
+
+    position:
+        fixed;
+
+    left:
+        50%;
+
+    top:
+        50%;
+
+    z-index:
+        100;
+
+    pointer-events:
+        none;
+
+}
+
+
+.burst-heart {
+
+    position:
+        absolute;
+
+    left:
+        0;
+
+    top:
+        0;
+
+    font-size:
+        25px;
+
+    animation:
+        burstHeart
+        2s
+        cubic-bezier(
+            0.175,
+            0.885,
+            0.32,
+            1.275
+        )
+        forwards;
+
+}
+
+
+@keyframes burstHeart {
+
+    0% {
+
+        transform:
+            translate(
+                0,
+                0
+            )
+            scale(0);
+
+        opacity:
+            1;
+
+    }
+
+    20% {
+
+        transform:
+            translate(
+                0,
+                0
+            )
+            scale(1.4);
+
+    }
+
+    100% {
+
+        transform:
+            translate(
+                var(--x),
+                var(--y)
+            )
+            scale(0.5);
+
+        opacity:
+            0;
+
+    }
+
+}
+
+
+/* =====================================================
+   GENERAL ANIMATIONS
+===================================================== */
+
+@keyframes fadeIn {
+
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+
+@keyframes doorGlow {
+
+    from {
+        opacity: 0.2;
+        transform: scaleX(0.8);
+    }
+
+    to {
+        opacity: 0.7;
+        transform: scaleX(1.1);
+    }
+
+}
+
+
+@keyframes heartbeat {
+
+    0%,
+    100% {
+
+        transform:
+            scale(1);
+
+    }
+
+    50% {
+
+        transform:
+            scale(1.18);
+
+    }
 
 }
 
@@ -604,21 +4018,377 @@ button:hover {
    MOBILE
 ===================================================== */
 
-@media (max-width: 600px) {
+@media (max-width: 700px) {
 
-    #human-puzzle {
-
-        height: 300px;
-
+    #welcome-screen h1 {
+        font-size: 30px;
     }
 
 
-    #human-piece {
-
-        width: 90px;
-
-        height: 90px;
-
+    #three-doors-screen {
+        padding: 20px 8px;
     }
 
+
+    #three-doors-screen h2 {
+        font-size: 30px;
+    }
+
+
+    #door-instruction {
+        font-size: 15px;
+        margin-bottom: 20px;
+    }
+
+
+    #doors-container {
+        gap: 8px;
+    }
+
+
+    .door {
+        width: 30vw;
+        height: 250px;
+    }
+
+
+    .door-frame {
+        left: 3px;
+        right: 3px;
+    }
+
+
+    .door > span {
+        font-size: 14px;
+    }
+
+
+    /* Door 2 */
+
+    #door-two-room {
+        padding: 0;
+    }
+
+
+    .door-two-memory-content {
+        padding:
+            10px 8px;
+    }
+
+
+    #door-two-intro h2 {
+        font-size: 23px;
+    }
+
+
+    #door-two-intro p {
+        font-size: 11px;
+    }
+
+
+    #door-two-intro .memory-intro-special {
+        font-size: 13px;
+    }
+
+
+    .memory-wall-title {
+        margin:
+            5px 0 7px;
+    }
+
+
+    .memory-wall-title h2 {
+        font-size: 19px;
+    }
+
+
+    .memory-wall-title p {
+        font-size: 10px;
+    }
+
+
+    #memory-card-wall {
+        width: 94vw;
+
+        height: 62vh;
+
+        gap: 6px;
+    }
+
+
+    .memory-card-front,
+    .memory-card-back {
+        border-radius: 7px;
+
+        border:
+            1px solid
+            rgba(255,255,255,0.18);
+    }
+
+
+    .door-two-final-message {
+        font-size: 14px;
+    }
+
+
+    #door-two-back {
+        padding:
+            8px 18px;
+
+        font-size: 12px;
+    }
+
+
+    .door-one-content h2 {
+        font-size: 30px;
+    }
+
+
+    .door-one-content p {
+        font-size: 16px;
+    }
+
+
+    #heart-picture-section h2 {
+        font-size: 25px;
+    }
+
+
+    #heart-taker-image {
+        max-width: 90vw;
+        max-height: 55vh;
+    }
+
+
+    /* -----------------------------------------
+       DOOR 3 MOBILE
+    ----------------------------------------- */
+
+    .door-three-opening-text h1 {
+        font-size: 34px;
+    }
+
+
+    .door-three-opening-text p {
+        font-size: 18px;
+    }
+
+
+    .door-three-step {
+        padding:
+            18px 12px;
+    }
+
+
+    .door-three-step h2 {
+        font-size: 25px;
+    }
+
+
+    .door-three-subtitle {
+        font-size: 16px;
+    }
+
+
+    .camera-frame {
+        width: 92vw;
+        height: 58vh;
+        max-height: 430px;
+    }
+
+
+    .love-message-card {
+        padding:
+            18px 12px;
+    }
+
+
+    .love-message-card p {
+        font-size: 17px;
+    }
+
+
+    #voice-visualizer {
+        gap: 4px;
+        width: 92vw;
+    }
+
+
+    .voice-bar {
+        width: 6px;
+    }
+
+
+    .anniversary-title span:first-child {
+        letter-spacing: 5px;
+    }
+
+
+    .anniversary-title span:last-child {
+        font-size: 46px;
+    }
+
+
+    .anniversary-love {
+        letter-spacing: 4px;
+    }
+
+
+    .anniversary-message {
+        font-size: 16px;
+    }
+
+
+    .finale-photo-card {
+        width: 105px;
+        height: 130px;
+        padding-bottom: 18px;
+    }
+
+
+    .finale-last-message strong {
+        font-size: 24px;
+    }
+
+
+    #finale-surprise {
+        font-size: 21px;
+    }
+
+}
+
+
+/* =====================================================
+   SMALL MOBILE
+===================================================== */
+
+@media (max-width: 400px) {
+
+    .door {
+        height: 220px;
+    }
+
+
+    #memory-card-wall {
+        height: 59vh;
+        gap: 4px;
+    }
+
+
+    .door-two-memory-content {
+        padding:
+            7px 6px;
+    }
+
+
+    #door-two-intro h2 {
+        font-size: 20px;
+    }
+
+
+    #door-two-intro p {
+        font-size: 10px;
+    }
+
+
+    .memory-wall-title h2 {
+        font-size: 17px;
+    }
+
+
+    .memory-wall-title p {
+        font-size: 9px;
+    }
+
+
+    .door-three-opening-text h1 {
+        font-size: 28px;
+    }
+
+
+    .camera-frame {
+        height: 50vh;
+    }
+
+
+    .love-message-card p {
+        font-size: 15px;
+    }
+
+
+    .finale-photo-card {
+        width: 85px;
+        height: 108px;
+    }
+
+
+    .anniversary-title span:last-child {
+        font-size: 38px;
+    }
+
+}
+
+/* =====================================================
+   QUIZ MOBILE TUNING
+===================================================== */
+
+@media (max-width: 700px) {
+
+    #quiz-question-area h3 {
+        font-size: 20px;
+        margin: 12px 0;
+    }
+
+    #quiz-intro {
+        font-size: 14px;
+    }
+
+    #quiz-progress {
+        font-size: 12px;
+    }
+
+    .quiz-answer-grid {
+        gap: 10px;
+    }
+}
+
+
+/* =====================================================
+   DOOR 2 FINAL RESPONSIVE OVERRIDES
+===================================================== */
+
+@media (max-width: 700px) {
+
+    #memory-card-wall {
+        width: 90vw;
+        height: 50vh;
+        gap: 5px;
+    }
+
+    .memory-display-card {
+        border-radius: 6px;
+    }
+
+    .door-two-final-message {
+        font-size: 14px;
+    }
+
+    #door-two-back {
+        padding: 9px 19px;
+        font-size: 12px;
+    }
+}
+
+
+@media (max-width: 400px) {
+
+    #memory-card-wall {
+        width: 92vw;
+        height: 47vh;
+        gap: 4px;
+    }
+
+    .door-two-final-message {
+        font-size: 13px;
+    }
 }

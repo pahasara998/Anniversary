@@ -14,7 +14,6 @@
 
 </head>
 
-
 <body>
 
 
@@ -47,13 +46,9 @@
         </h2>
 
         <p>
-
-            No one else can enter Hasitha's life.
-
+            No one else can enter Hasitha's life. Only One Girl Can...😌😎
             <br>
-
             We need to verify who you are. ❤️
-
         </p>
 
         <button id="verify-button">
@@ -65,7 +60,7 @@
 
 
     <!-- =========================================
-         FIRST QUIZ
+         FIRST QUIZ — 4 QUESTIONS
     ========================================== -->
 
     <div id="quiz-screen">
@@ -74,115 +69,66 @@
             How Well Do You Know Hasitha? ❤️
         </h2>
 
-        <p>
-
-            Before you enter his life,
-
-            <br>
-
-            let's see if you really know him.
-
+        <p id="quiz-intro">
+            Let's see how well you remember us... 🥹
         </p>
 
-
-        <h3>
-            What is Hasitha's favorite food?
-        </h3>
-
-
-        <div class="answers">
-
-            <button
-                class="answer"
-                data-answer="wrong">
-
-                Pizza 🍕
-
-            </button>
-
-
-            <button
-                class="answer"
-                data-answer="correct">
-
-                Rice & Curry 🍛
-
-            </button>
-
-
-            <button
-                class="answer"
-                data-answer="wrong">
-
-                Burger 🍔
-
-            </button>
-
-
-            <button
-                class="answer"
-                data-answer="wrong">
-
-                Sushi 🍣
-
-            </button>
-
+        <div id="quiz-progress">
+            Question 1 of 4
         </div>
 
-
+        <div id="quiz-question-area">
+        </div>
 
         <!-- WRONG ANSWER -->
 
         <div id="wrong-answer">
 
-            <p>
-
+            <p id="wrong-answer-text">
                 ❌ Wrong!
-
                 <br>
-
-                Hmm...
-                are you really the person who belongs here? 😏
-
+                Hmm... are you really the person
+                who belongs here? 😏
             </p>
 
-
             <button id="another-chance-button">
-
-                Yes, Give Me Another Chance ❤️
-
+                Try Again ❤️
             </button>
 
-
             <button id="no-chance-button">
-
                 No 😢
-
             </button>
 
         </div>
-
 
 
         <!-- CORRECT ANSWER -->
 
         <div id="correct-answer">
 
-            <p>
-
-                ✅ Correct!
-
-                <br>
-
-                Maybe you really do know Hasitha... ❤️
-
+            <p id="correct-answer-text">
+                ✅ Correct! ❤️
             </p>
 
+            <button id="continue-question-button">
+                Next Question ❤️
+            </button>
+
+        </div>
+
+
+        <!-- COMPLETE -->
+
+        <div id="quiz-complete">
+
+            <p>
+                🎉 You passed all four questions!
+                <br>
+                Maybe you really do know Hasitha... ❤️
+            </p>
 
             <button id="continue-button">
-
                 Continue ❤️
-
             </button>
 
         </div>
@@ -201,29 +147,18 @@
             You're In... ❤️
         </h2>
 
-
         <p>
-
             You passed the first test.
-
             <br><br>
-
-            But knowing Hasitha isn't enough...
-
+            But knowing these small things about Hasitha isn't enough...
         </p>
-
 
         <p>
-
             The next challenge is waiting for you.
-
         </p>
-
 
         <button id="next-challenge-button">
-
             I'm Ready 😏
-
         </button>
 
     </div>
@@ -237,55 +172,26 @@
     <div id="memory-lock-screen">
 
         <h2 id="memory-title">
-
             🧠 Memory Lock
-
         </h2>
 
-
         <p id="memory-instruction">
-
             📸 Remember this moment...
-
         </p>
 
-
-
-        <!-- SINGLE IMAGE -->
-
-        <img
-            id="memory-image"
-            src=""
-            alt="Memory"
-        >
-
-
-
-        <!-- THREE IMAGES -->
+        <img id="memory-image"
+             src=""
+             alt="Memory">
 
         <div id="memory-three-images">
-
-            <!-- JavaScript creates the
-                 three images here -->
-
         </div>
-
-
-
-        <!-- QUESTION -->
 
         <div id="memory-question">
-
         </div>
 
-
-
-        <!-- TIMER -->
-
+        <!-- Timer is visible for Memory Lock -->
         <div id="memory-timer">
-
-            ⏳ 5
-
+            5
         </div>
 
     </div>
@@ -298,11 +204,9 @@
 
     <div id="human-verification-screen">
 
-
         <h2>
             🤖 Human Verification
         </h2>
-
 
         <p id="human-instruction">
 
@@ -315,7 +219,6 @@
 
         </p>
 
-
         <p class="human-hint">
 
             🧩 Drag the missing person
@@ -324,41 +227,667 @@
         </p>
 
 
-
-        <!-- =====================================
-             PUZZLE AREA
-        ====================================== -->
-
         <div id="human-puzzle">
 
+            <img id="human-background"
+                 src="images/human-background.png"
+                 alt="Puzzle background">
 
-            <!-- Background Image -->
+            <img id="human-piece"
+                 src="images/human-piece.png"
+                 alt="Puzzle piece"
+                 draggable="true">
 
-            <img
-                id="human-background"
-                src="images/human-background.jpg"
-                alt="Puzzle background"
-            >
+        </div>
 
 
-            <!-- Draggable Image -->
+        <div id="human-result">
+        </div>
 
-            <img
-                id="human-piece"
-                src="images/human-piece.jpg"
-                alt="Puzzle piece"
-                draggable="true"
-            >
+    </div>
+
+
+
+    <!-- =========================================
+         THREE DOORS
+    ========================================== -->
+
+    <div id="three-doors-screen">
+
+        <h2>
+            🚪 Three Doors
+        </h2>
+
+        <p id="door-instruction">
+
+            You are so close... ❤️
+
+            <br><br>
+
+            Three doors are waiting for you.
+
+            <br>
+
+            But only one leads into
+            Hasitha's life.
+
+            <br><br>
+
+            Choose carefully... 😏
+
+        </p>
+
+
+        <div id="doors-container">
+
+
+            <!-- DOOR 1 -->
+
+            <button class="door"
+                    data-door="1">
+
+                <div class="door-frame">
+
+                    <div class="door-top-light"></div>
+
+                    <div class="door-panel">
+
+                        <div class="door-knob"></div>
+
+                    </div>
+
+                </div>
+
+                <span>
+                    Door 1
+                </span>
+
+            </button>
+
+
+
+            <!-- DOOR 2 -->
+
+            <button class="door"
+                    data-door="2">
+
+                <div class="door-frame">
+
+                    <div class="door-top-light"></div>
+
+                    <div class="door-panel">
+
+                        <div class="door-knob"></div>
+
+                    </div>
+
+                </div>
+
+                <span>
+                    Door 2
+                </span>
+
+            </button>
+
+
+
+            <!-- DOOR 3 -->
+
+            <button class="door"
+                    data-door="3">
+
+                <div class="door-frame">
+
+                    <div class="door-top-light"></div>
+
+                    <div class="door-panel">
+
+                        <div class="door-knob"></div>
+
+                    </div>
+
+                </div>
+
+                <span>
+                    Door 3 ❤️
+                </span>
+
+            </button>
+
+        </div>
+
+
+        <div id="door-result">
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================================
+         DOOR 1 ROOM
+    ========================================== -->
+
+    <div id="door-one-room">
+
+        <div class="door-opening-animation">
+
+            <div class="room-light"></div>
+
+        </div>
+
+
+        <div class="door-one-content">
+
+            <h2>
+                ❌ Wrong Door...
+            </h2>
+
+            <p>
+                You can't enter Hasitha's life
+                through this door... 😏
+            </p>
+
+            <p>
+                But wait...
+                <br><br>
+                You can see who took his heart. ❤️
+            </p>
+
+
+            <button id="view-heart-button">
+                View ❤️
+            </button>
+
+        </div>
+
+
+        <div id="heart-picture-section">
+
+            <h2>
+                ❤️ The One Who Took My Heart ❤️
+            </h2>
+
+
+            <img id="heart-taker-image"
+                 src="images/heart-taker.jpg"
+                 alt="The one who took Hasitha's heart">
+
+
+            <p>
+                Well... now you know. 😌❤️
+            </p>
+
+
+            <button id="back-to-doors-button">
+                Back to the Three Doors 🚪
+            </button>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================================
+         DOOR 2 — MEMORY ROOM
+    ========================================== -->
+
+    <div id="door-two-room">
+
+        <div class="door-two-memory-content">
+
+            <div id="door-two-intro">
+
+                <h2>
+                     Wrong Door...😒
+                </h2>
+
+                <p>
+                    Every little moment became part of our story. 🥹
+                </p>
+
+            </div>
+
+
+            <div class="memory-wall-title">
+
+                <h2>
+                    ❤️ Our Little Memories
+                </h2>
+
+            </div>
+
+
+            <div id="memory-card-wall">
+            </div>
+
+
+            <div id="door-two-final">
+
+                <p class="door-two-final-message">
+                    ❤️ 40 little memories.
+                    <br>
+                    One beautiful story. 🥹
+                </p>
+
+            </div>
+
+
+            <button id="door-two-back">
+                Back to the Three Doors 🚪
+            </button>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================================
+         🚪 DOOR 3 — THE REAL DOOR
+    ========================================== -->
+
+    <div id="door-three-room">
+
+
+        <!-- ---------------------------------------
+             CINEMATIC OPENING
+        ---------------------------------------- -->
+
+        <div id="door-three-opening">
+
+            <div class="door-three-light"></div>
+
+            <div class="door-three-ring ring-one"></div>
+            <div class="door-three-ring ring-two"></div>
+            <div class="door-three-ring ring-three"></div>
+
+            <div class="door-three-opening-text">
+
+                <div class="opening-small">
+                    ✦ ❤️ ✦
+                </div>
+
+                <h1>
+                    You chose correctly...
+                </h1>
+
+                <p>
+                    This is the right door. ❤️
+                </p>
+
+            </div>
 
         </div>
 
 
 
-        <!-- =====================================
-             VERIFICATION RESULT
-        ====================================== -->
+        <!-- ---------------------------------------
+             CAMERA VERIFICATION
+        ---------------------------------------- -->
 
-        <div id="human-result">
+        <div id="door-three-camera-step"
+             class="door-three-step">
+
+
+            <div class="verification-orbit">
+
+                <div class="orbit-ring orbit-one"></div>
+                <div class="orbit-ring orbit-two"></div>
+                <div class="orbit-ring orbit-three"></div>
+
+                <div class="camera-icon">
+                    📷
+                </div>
+
+            </div>
+
+
+            <h2>
+                Wait... 👀
+            </h2>
+
+            <p class="door-three-subtitle">
+                Before you enter Hasitha's life...
+            </p>
+
+            <p>
+                We need to identify you first. ❤️
+            </p>
+
+
+            <button id="start-camera-button"
+                    class="special-action-button">
+
+                📷 Open Camera
+
+            </button>
+
+
+            <div id="camera-error"
+                 class="door-three-error">
+            </div>
+
+
+        </div>
+
+
+
+        <!-- ---------------------------------------
+             CAMERA SCANNING
+        ---------------------------------------- -->
+
+        <div id="door-three-camera-scan"
+             class="door-three-step">
+
+
+            <div class="camera-frame">
+
+                <video id="door-three-video"
+                       autoplay
+                       playsinline
+                       muted>
+                </video>
+
+
+                <div class="camera-overlay">
+
+                    <div class="scan-corner top-left"></div>
+                    <div class="scan-corner top-right"></div>
+                    <div class="scan-corner bottom-left"></div>
+                    <div class="scan-corner bottom-right"></div>
+
+                    <div class="scan-line"></div>
+
+                    <div class="scan-text">
+                        SCANNING...
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="scan-status">
+
+                <div class="status-dot"></div>
+
+                <span id="camera-status-text">
+                    Looking for the owner of Hasitha's heart...
+                </span>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ---------------------------------------
+             VOICE VERIFICATION
+        ---------------------------------------- -->
+
+        <div id="door-three-voice-step"
+             class="door-three-step">
+
+
+            <div class="voice-glow">
+
+                <div class="voice-mic">
+                    🎤
+                </div>
+
+            </div>
+
+
+            <h2>
+                One final verification... ❤️
+            </h2>
+
+
+            <p class="door-three-subtitle">
+                You need to confess your love for Hasitha. Say it loudly...!
+            </p>
+
+
+            <div class="love-message-card">
+
+                <div class="message-sparkle sparkle-one">
+                    ✦
+                </div>
+
+                <div class="message-sparkle sparkle-two">
+                    ✦
+                </div>
+
+                <div class="message-sparkle sparkle-three">
+                    ✦
+                </div>
+
+                <p>
+                    I LOVE YOU HUBBY.... ❤️
+                </p>
+
+                <p>
+                    I LOVE YOU SO MUCH❤️...UMMAAAAAAAAAAAAAA 😘🙊
+                </p>
+
+            </div>
+
+
+            <p class="speak-instruction">
+
+                🎤 Please say the message aloud.
+
+            </p>
+
+
+            <!-- LIVE AUDIO VISUALIZER -->
+
+            <div id="voice-visualizer">
+
+                <div class="voice-bar"></div>
+                <div class="voice-bar"></div>
+                <div class="voice-bar"></div>
+                <div class="voice-bar"></div>
+                <div class="voice-bar"></div>
+                <div class="voice-bar"></div>
+                <div class="voice-bar"></div>
+                <div class="voice-bar"></div>
+                <div class="voice-bar"></div>
+                <div class="voice-bar"></div>
+                <div class="voice-bar"></div>
+
+            </div>
+
+
+            <div id="voice-status">
+
+                🎤 Waiting for your voice...
+
+            </div>
+
+
+            <div id="voice-progress">
+
+                <div id="voice-progress-fill"></div>
+
+            </div>
+
+
+            <div id="voice-hint">
+
+                Start speaking... ❤️
+
+            </div>
+
+
+            <div id="voice-error"
+                 class="door-three-error">
+            </div>
+
+
+        </div>
+
+
+
+        <!-- ---------------------------------------
+             VOICE SUCCESS
+        ---------------------------------------- -->
+
+        <div id="door-three-success"
+             class="door-three-step">
+
+
+            <div class="success-heart">
+
+                ❤️
+
+            </div>
+
+
+            <div class="success-ring"></div>
+
+
+            <h2>
+                Voice Verified
+            </h2>
+
+
+            <p>
+                I knew it was you...Love to hear it from You.. 🥹❤️
+            </p>
+
+
+            <div class="success-check">
+                ✓
+            </div>
+
+        </div>
+
+
+
+        <!-- ---------------------------------------
+             FINAL ANNIVERSARY
+        ---------------------------------------- -->
+
+        <div id="anniversary-finale">
+
+
+            <div id="finale-stars"></div>
+
+            <div id="finale-hearts"></div>
+
+            <div id="finale-confetti"></div>
+
+
+            <div class="finale-content">
+
+
+                <div class="finale-small-heart">
+                    ❤️
+                </div>
+
+
+                <p class="finale-line finale-line-one">
+                    And now...
+                </p>
+
+
+                <p class="finale-line finale-line-two">
+                    You can finally enter the surprise room!
+                </p>
+
+
+                <div class="finale-main-heart">
+                    ❤️
+                </div>
+
+
+                <h1 class="anniversary-title">
+
+                    <span>HAPPY</span>
+
+                    <span>ANNIVERSARY</span>
+
+                </h1>
+
+
+                <h2 class="anniversary-love">
+                    MY LOVE ❤️
+                </h2>
+
+
+                <div class="finale-divider">
+                    ✦ ✦ ✦
+                </div>
+
+
+                <p class="anniversary-message">
+
+                    Thank you for becoming
+                    <br>
+                    such a beautiful part of my life.
+
+                </p>
+
+
+                <p class="anniversary-message second">
+
+                    Every memory.
+                    Every smile.
+                    Every little moment.
+
+                    <br><br>
+
+                    I would choose you
+                    <br>
+                    all over again. ❤️
+
+                </p>
+
+
+                <!-- MEMORY PHOTOS CREATED BY JS -->
+
+                <div id="finale-memory-photos">
+                </div>
+
+
+                <div class="finale-last-message">
+
+                    <span>
+                        Welcome to
+                    </span>
+
+                    <strong>
+                        Hasitha's Life ❤️
+                    </strong>
+
+                </div>
+
+
+                <button id="finale-heart-button">
+
+                    Tap for one more surprise ❤️
+
+                </button>
+
+
+                <div id="finale-surprise">
+
+                    I LOVE YOU MORE THAN
+                    <br>
+                    WORDS CAN SAY. ❤️
+
+                </div>
+
+
+            </div>
+
+
+            <!-- FINAL HEART BURST -->
+
+            <div id="heart-burst"></div>
 
         </div>
 
@@ -371,6 +900,7 @@
          JAVASCRIPT
     ========================================== -->
 
+    <script src="https://cdn.jsdelivr.net/npm/face-api.js@0.22.2/dist/face-api.min.js"></script>
     <script src="index.js"></script>
 
 </body>
