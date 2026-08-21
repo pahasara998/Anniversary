@@ -4140,3 +4140,314 @@ function createHeartBurst() {
     }
 
 }
+
+
+/* =====================================================
+   ❤️ ANNIVERSARY COUNTDOWN + LOCK
+   SERVER TIME — COMPUTER CLOCK SAFE
+===================================================== */
+
+const ANNIVERSARY_TIME =
+    new Date("2026-09-04T00:00:00+09:00").getTime();
+
+let serverTimeAtSync = null;
+let performanceTimeAtSync = null;
+
+
+/* =====================================================
+   GET SERVER TIME
+===================================================== */
+
+async function getServerTime() {
+
+    try {
+
+        /*
+           Ask the SAME website for its server time.
+
+           This avoids relying on the visitor's
+           computer clock.
+        */
+
+        const response =
+            await fetch(
+                window.location.href,
+                {
+                    method: "HEAD",
+                    cache: "no-store"
+                }
+            );
+
+
+        const serverDate =
+            response.headers.get("Date");
+
+
+        if (!serverDate) {
+
+            throw new Error(
+                "Server did not provide a Date header."
+            );
+
+        }
+
+
+        serverTimeAtSync =
+            new Date(serverDate).getTime();
+
+
+        performanceTimeAtSync =
+            performance.now();
+
+
+        console.log(
+            "✅ Server time synchronized:",
+            new Date(serverTimeAtSync)
+        );
+
+
+        updateCountdown();
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "❌ Could not get server time:",
+            error
+        );
+
+
+        /*
+           Keep the door locked if trusted
+           server time cannot be obtained.
+        */
+
+        if (enterButton) {
+
+            enterButton.disabled = true;
+
+            enterButton.style.opacity = "0.5";
+
+            enterButton.style.cursor =
+                "not-allowed";
+
+        }
+
+    }
+
+}
+
+
+/* =====================================================
+   UPDATE COUNTDOWN
+===================================================== */
+
+function updateCountdown() {
+
+    /*
+       Don't calculate anything until
+       server time has been obtained.
+    */
+
+    if (
+        serverTimeAtSync === null ||
+        performanceTimeAtSync === null
+    ) {
+
+        return;
+
+    }
+
+
+    /*
+       performance.now() measures real elapsed
+       browser time and is NOT affected when
+       the user changes the computer clock.
+    */
+
+    const elapsed =
+        performance.now() -
+        performanceTimeAtSync;
+
+
+    const trustedNow =
+        serverTimeAtSync +
+        elapsed;
+
+
+    const difference =
+        ANNIVERSARY_TIME -
+        trustedNow;
+
+
+    /* =================================================
+       🔒 ANNIVERSARY HAS NOT ARRIVED
+    ================================================= */
+
+    if (difference > 0) {
+
+        if (enterButton) {
+
+            enterButton.disabled = true;
+
+            enterButton.style.opacity = "0.5";
+
+            enterButton.style.cursor =
+                "not-allowed";
+
+        }
+
+
+        const days =
+            Math.floor(
+                difference /
+                (1000 * 60 * 60 * 24)
+            );
+
+
+        const hours =
+            Math.floor(
+                (
+                    difference /
+                    (1000 * 60 * 60)
+                ) % 24
+            );
+
+
+        const minutes =
+            Math.floor(
+                (
+                    difference /
+                    (1000 * 60)
+                ) % 60
+            );
+
+
+        const seconds =
+            Math.floor(
+                (
+                    difference /
+                    1000
+                ) % 60
+            );
+
+
+        const daysElement =
+            document.getElementById(
+                "countdown-days"
+            );
+
+
+        const hoursElement =
+            document.getElementById(
+                "countdown-hours"
+            );
+
+
+        const minutesElement =
+            document.getElementById(
+                "countdown-minutes"
+            );
+
+
+        const secondsElement =
+            document.getElementById(
+                "countdown-seconds"
+            );
+
+
+        if (daysElement) {
+
+            daysElement.textContent =
+                String(days).padStart(2, "0");
+
+        }
+
+
+        if (hoursElement) {
+
+            hoursElement.textContent =
+                String(hours).padStart(2, "0");
+
+        }
+
+
+        if (minutesElement) {
+
+            minutesElement.textContent =
+                String(minutes).padStart(2, "0");
+
+        }
+
+
+        if (secondsElement) {
+
+            secondsElement.textContent =
+                String(seconds).padStart(2, "0");
+
+        }
+
+
+        return;
+
+    }
+
+
+    /* =================================================
+       ❤️ SEPTEMBER 4 HAS ARRIVED
+    ================================================= */
+
+    if (enterButton) {
+
+        enterButton.disabled = false;
+
+        enterButton.style.opacity = "1";
+
+        enterButton.style.cursor =
+            "pointer";
+
+    }
+
+
+    const countdown =
+        document.getElementById(
+            "countdown"
+        );
+
+
+    if (countdown) {
+
+        countdown.innerHTML =
+            "❤️ Our 1st Anniversary is here! ❤️";
+
+    }
+
+}
+
+
+/* =====================================================
+   INITIAL SERVER TIME SYNC
+===================================================== */
+
+getServerTime();
+
+
+/* =====================================================
+   UPDATE EVERY SECOND
+===================================================== */
+
+setInterval(
+    updateCountdown,
+    1000
+);
+
+
+/* =====================================================
+   RE-SYNC WITH SERVER EVERY 5 MINUTES
+===================================================== */
+
+setInterval(
+    getServerTime,
+    5 * 60 * 1000
+);
