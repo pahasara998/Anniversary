@@ -4148,7 +4148,7 @@ function createHeartBurst() {
 ===================================================== */
 
 const ANNIVERSARY_TIME =
-    new Date("2026-09-04T00:00:00+09:00").getTime();
+    new Date("2026-08-04T00:00:00+09:00").getTime();
 
 let serverTimeAtSync = null;
 let performanceTimeAtSync = null;
